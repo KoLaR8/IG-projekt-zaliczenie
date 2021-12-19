@@ -1,26 +1,37 @@
 body {
     background-color: #21204c;
     font-family: 'Alata';
-  }
-header{
+}
+
+input {
+    background-color: #a4ace7;
+    color: #584e9a;
+}
+
+header {
     padding-bottom: 80px;
 }
+
 .your-bg-navbar {
     background-color: #d686d7;
 }
+
 .nav-link {
     color: #584e9a !important;
     font-size: 20px;
     font-weight: bold;
 }
+
 .navbar-brand {
     color: #584e9a !important;
     font-size: 35px;
     font-weight: bold;
 }
+
 .dropdown-menu {
     background-color: #58baa7;
 }
+
 .dropdown-item {
     color: #584e9a !important;
     font-size: 20px;
