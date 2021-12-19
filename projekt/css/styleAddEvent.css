@@ -1,0 +1,43 @@
+.data{
+    margin-top: 3%;
+
+
+}
+.input{
+    background-color: #d686d7;
+    display: block;
+    width: 60%;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+    float: right;
+    margin-right: 20%;
+
+    color: black;
+    position: relative;
+    outline-width: 0;
+    margin-bottom: 30px;
+}
+
+.photo{
+    margin-top: 30%;
+    margin-left: 10%;
+}
+
+label{
+
+    display: block;
+    width: 10%;
+    float: left;
+    margin-right: 20%;
+    margin-inside: 10px;
+    color: #d686d7;;
+    position: relative;
+}
+.form{
+    float: left;
+    position: relative;
+    margin-bottom: -30px;
+    margin-left: 10%;
+}
