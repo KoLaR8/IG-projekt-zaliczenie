@@ -48,15 +48,28 @@
   <form>
     <div class="form-group">
       <label for="formGroupNameInput" id="name">Imię</label>
-      <input type="text" class="form-control" id="formGroupNameInput" placeholder="Example input">
+      <input type="text" class="form-control" id="formGroupNameInput">
     </div>
     <div class="form-group">
       <label for="formGroupSurnameInput" id="surname">Nazwisko</label>
-      <input type="text" class="form-control" id="formGroupSurnameInput" placeholder="Another input">
+      <input type="text" class="form-control" id="formGroupSurnameInput">
     </div>
     <div class="form-group">
       <label for="formGroupMailInput" id="mail">adres e-mail</label>
-      <input type="text" class="form-control" id="formGroupMailInput" placeholder="Another input">
+      <input type="text" class="form-control" id="formGroupMailInput">
+    </div>
+    <div id="paymentSection">
+      <div id ="selectDiscount">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Zniżki</option>
+          <option value="1">Studencka 50%</option>
+          <option value="2">Emeryt 40%</option>
+          <option value="3">Karta Dużej rodziny 50%</option>
+        </select>
+      </div>
+      <div class ="button" id ="paymentButton">
+        <button type="button" class="btn btn-primary btn-lg">Przejdź do płatności</button>
+      </div>
     </div>
   </form>
 </div>

@@ -6,17 +6,54 @@ label{
 
 #buyingTicketContent{
     width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 5%;
     margin-top: 3%;
 }
+#paymentSection{
+    margin-top: 1vw;
+    margin-bottom: 6vw;
+}
 
+
+#paymentButton button{
+    width: 40%;
+    height: 100px;
+    margin-top: 2vw;
+    border: none;
+    background-color: #58baa7;
+    margin-right: 0;
+}
+
+#paymentButton button:hover{
+    background-color: #018c8c;
+}
+
+#selectDiscount{
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    margin-right: 11%;
+    float: left;
+    width: 27%;
+}
+
+#selectDiscount select{
+    background-color: #d686d7;
+    border: none;
+}
+
+#selectDiscount select:hover{
+    background-color: white;
+}
 .form-group{
     width: 98.5%;
-    margin-top: 1vw;
+    margin-top: 2vw;
     margin-right: 1.5%;
 }
 
 .form-control{
     width: 60%;
+    background-color: #d686d7;
+    border:none;
 }
+
