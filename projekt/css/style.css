@@ -1,0 +1,25 @@
+body {
+    background-color: #21204c;
+    font-family: 'Alata';
+  }
+.your-bg-navbar {
+    background-color: #d686d7;
+}
+.nav-link {
+    color: #584e9a !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+.navbar-brand {
+    color: #584e9a !important;
+    font-size: 35px;
+    font-weight: bold;
+}
+.dropdown-menu {
+    background-color: #58baa7;
+}
+.dropdown-item {
+    color: #584e9a !important;
+    font-size: 20px;
+    font-weight: bold;
+}
