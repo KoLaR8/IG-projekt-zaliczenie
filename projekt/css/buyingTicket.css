@@ -1,0 +1,22 @@
+label{
+    float: left;
+    margin-left: 3%;
+    width: 17%;
+}
+
+#buyingTicketContent{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+}
+
+.form-group{
+    width: 98.5%;
+    margin-top: 1vw;
+    margin-right: 1.5%;
+}
+
+.form-control{
+    width: 60%;
+}
