@@ -1,12 +1,15 @@
 body {
     background-color: #21204c;
     font-family: 'Alata';
+    color: #584e9a;
 }
 
 input {
     background-color: #a4ace7;
     color: #584e9a;
 }
+
+
 
 header {
     padding-bottom: 80px;
