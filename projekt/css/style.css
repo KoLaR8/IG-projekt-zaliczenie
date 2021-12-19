@@ -2,6 +2,9 @@ body {
     background-color: #21204c;
     font-family: 'Alata';
   }
+header{
+    padding-bottom: 80px;
+}
 .your-bg-navbar {
     background-color: #d686d7;
 }
