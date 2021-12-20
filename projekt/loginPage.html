@@ -52,9 +52,11 @@
     </nav>
 </header>
 
-<button id="userLogin" class="userChooseButton" onclick="chooseAccountAndLogin(this)">Logowanie Użytkownika</button>
-<button id="organizerLogin" class="userChooseButton" onclick="chooseAccountAndLogin(this)">Logowanie Organizatora
+
+<button type="button" class="btn btn-primary btn-lg" id="userLogin"  onclick="chooseAccountAndLogin(this)">Logowanie Użytkownika</button>
+<button type="button" class="btn btn-primary btn-lg" id="organizerLogin" onclick="chooseAccountAndLogin(this)">Logowanie Organizatora
 </button>
+
 <a href="loginPage.html" id="backButton" class="loginButton">Wybór typu konta</a>
 <div id="loggingInAsType"></div>
 <input placeholder="Login" id="login" class="loginLabel">

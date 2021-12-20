@@ -2,7 +2,8 @@ let id;
 
 function chooseAccountAndLogin(element) {
     id = element.id
-    for (let userChooseButton of document.getElementsByClassName("userChooseButton")) {
+    // for (let userChooseButton of document.getElementsByClassName("userChooseButton")) {
+    for (let userChooseButton of document.getElementsByClassName("btn btn-primary btn-lg")) {
         userChooseButton.style.display = "none"
     }
     let loggingInAsType = document.getElementById("loggingInAsType")
