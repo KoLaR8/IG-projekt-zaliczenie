@@ -1,0 +1,86 @@
+p {
+    position: absolute;
+    left: 15vw;
+    top: 30vh;
+}
+
+.searchBar {
+    border: 1px;
+    border-radius: 50px;
+    height: 35px;
+    width: 70vw;
+}
+
+input {
+    padding-left: 10px;
+    outline-width: 0;
+}
+
+
+button {
+    margin-left: -30px;
+    height: 35px;
+    border-width: medium;
+    border-radius: 50px;
+    border-color: #d686d7;
+    background-color: #a4ace7;
+    color: #584e9a;
+}
+
+button:hover {
+    background-color: #d686d7;
+}
+
+.recommended {
+    position: absolute;
+    top: 40vh;
+    left: 45vw;
+    color: #58baa7;
+    font-size: calc(2vw + 2vh);
+}
+
+.slider {
+    overflow: hidden;
+    height: 30vh;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-top: 40vh;
+}
+
+@-webkit-keyframes slideAnimation {
+    0% {left:0;}
+    10% {left:0;}
+    20% {left:71.5vw;}
+    30% {left:71.5vw;}
+    40% {left:141.5vw;}
+    50% {left:141.5vw;}
+    60% {left:71.5vw;}
+    70% {left:71.5vw;}
+    80% {left:0;}
+    90% {left:0;}
+    100% {left:0;}
+}
+
+img {
+    height: 30vh;
+    width: 70vw;
+}
+
+.slideImages {
+    width: 210vw;
+    height: 30vh;
+    position: relative;
+    margin-left: -1900px;
+    -webkit-animation-name: slideAnimation;
+    -webkit-animation-duration: 15s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+}
+
+.imgContainer {
+    height: 30vh;
+    width: 70vw;
+    position: relative;
+    float: right;
+}
