@@ -20,11 +20,14 @@
     margin-bottom: 30px;
 }
 
-.photo{
-    margin-top: 30%;
+#photo{
+    margin-top: 20%;
     margin-left: 10%;
 }
-
+#localization{
+    margin-top: 5%;
+    margin-left: 10%;
+}
 label{
 
     display: block;
@@ -40,4 +43,24 @@ label{
     position: relative;
     margin-bottom: -30px;
     margin-left: 10%;
+}
+#verification-button{
+    width: 80%;
+    margin-left: 15%;
+    margin-right: 5%;
+}
+#verification-button button{
+    float: right;
+    margin-right: 20%;
+    background-color: #58baa7;
+    margin-top: 10%;
+    border: none;
+    height: 100px;
+    width: 40%;
+    font-size: 25px;
+}
+#verification-button button:hover{
+
+
+    background-color: #018c8c;
 }
