@@ -10,7 +10,7 @@
             crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styleAddEvent.css">
+    <link rel="stylesheet" href="css/styleLogin.css">
 </head>
 <body>
 <header>
@@ -51,34 +51,53 @@
     </nav>
 </header>
 
+<button id="userLogin" class="userChooseButton" onclick="chooseAccountAndLogin(this)">Logowanie Użytkownika</button>
+<button id="organizerLogin" class="userChooseButton" onclick="chooseAccountAndLogin(this)">Logowanie Organizatora
+</button>
+<a href="loginPage.html" id="backButton" class="loginButton">Wybór typu konta</a>
+<div id="loginType"></div>
+<input placeholder="Login" id="login" class="loginLabel">
+<input type="password" placeholder="Hasło" id="password" class="loginLabel">
+<button id="signInButton" class="loginButton" onclick="login()">Zaloguj</button>
+<script>
+    let id;
 
-<div class="data">
+    function chooseAccountAndLogin(element) {
+        id = element.id
+        for (let userChooseButton of document.getElementsByClassName("userChooseButton")) {
+            userChooseButton.style.display = "none"
+        }
+        let loginType = document.getElementById("loginType")
+        if (id === "organizerLogin") {
+            loginType.innerText = "Logowanie jako Organizator"
+        }
+        else {
+            loginType.innerText = "Logowanie jako Użytkownik"
+        }
+        loginType.style.display = "initial"
+        for (let userChooseButton of document.getElementsByClassName("loginLabel")) {
+            userChooseButton.style.display = "initial"
+        }
+        for (let userChooseButton of document.getElementsByClassName("loginButton")) {
+            userChooseButton.style.display = "initial"
+        }
+    }
 
-
-    <label class="form">Nazwa</label> <span class="input" role="textbox" contenteditable></span>
-    <label class="form">Artysta</label> <span class="input" role="textbox" contenteditable></span>
-    <label class="form">Opis</label> <span class="input" role="textbox" contenteditable></span>
-    <label class="form">Organizator</label> <span class="input" role="textbox" contenteditable></span>
-
-
-</div>
-<div class="ticket_pool">
-
-</div>
-<div id="photo">
-    <p>Zdjecie</p>
-
-    <div>
-        <input type="file" name="nazwa" accept="image/png,image/jpeg,image/gif"/>
-    </div>
-
-</div>
-<div id="localization">
-    <p>Lokalizacja</p>
-</div>
-<div id="verification-button">
-    <button type="button" class="btn btn-primary btn-lg">Przekaż do weryfikacji</button>
-</div>
+    function login() {
+        let login = document.getElementById("login")
+        let password = document.getElementById("password")
+        if(login.value === "test" && password.value === "test") {
+            if (id === "organizerLogin") {
+                window.location = "mainPageOrganizer.html"
+            } else {
+                window.location = "mainPageUser.html"
+            }
+        }
+        else {
+            alert("Niepoprawne dane logowania!")
+        }
+    }
+</script>
 
 </body>
 </html>

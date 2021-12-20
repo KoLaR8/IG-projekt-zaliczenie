@@ -1,0 +1,55 @@
+.userChooseButton {
+
+}
+
+.loginLabel {
+    color: #584e9a;
+    width: 35vw;
+    margin-top: 2vh;
+    float: left;
+    margin-left: 31.5vw;
+    display: none;
+    clear: both;
+}
+
+.loginButton {
+    float: left;
+    display: none;
+    clear: both;
+}
+
+#loginType {
+    font-weight: bold;
+    font-size: calc(2vh + 2vw);
+    margin-top: 10vh;
+    margin-left: 30vw;
+    margin-bottom: 1vh;
+    float: left;
+    display: none;
+    clear: both;
+}
+
+#backButton {
+    margin-left: 1vw;
+    color: #58baa7;
+    text-decoration: none;
+}
+
+#backButton:hover {
+    color: #d686d7;
+}
+
+#signInButton {
+    background-color: #58baa7;
+    color: #584e9a;
+    font-weight: bold;
+    font-size: calc(1vh + 1vw);
+    margin-top: 5vh;
+    margin-left: 42vw;
+    width: 15vw;
+    height: 5vw;
+}
+
+#signInButton:hover {
+    background-color: #d686d7;
+}
