@@ -18,7 +18,10 @@ header {
 .your-bg-navbar {
     background-color: #d686d7;
 }
-
+.nav-item{
+    position: relative;
+    margin-right: 1vw;
+}
 .nav-link {
     color: #584e9a !important;
     font-size: 20px;

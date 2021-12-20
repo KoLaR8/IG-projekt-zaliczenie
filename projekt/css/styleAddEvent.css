@@ -1,7 +1,10 @@
 .data{
     margin-top: 3%;
+    position: relative;
 
-
+}
+p{
+    position: relative;
 }
 .input{
     background-color: #d686d7;
@@ -19,8 +22,11 @@
     outline-width: 0;
     margin-bottom: 30px;
 }
-
+.loadPhoto button{
+    background-color: #d686d7;
+}
 #photo{
+    position: relative;
     margin-top: 20%;
     margin-left: 10%;
 }
@@ -50,6 +56,7 @@ label{
     margin-right: 5%;
 }
 #verification-button button{
+    position: relative;
     float: right;
     margin-right: 20%;
     background-color: #58baa7;

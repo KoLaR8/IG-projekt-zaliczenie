@@ -60,23 +60,25 @@
     margin-left: 1vw;
     color: #58baa7;
     text-decoration: none;
+    opacity: 1;
 }
 
 #backButton:hover {
-    color: #d686d7;
+   opacity: 0.8;
 }
 
 #signInButton {
     background-color: #58baa7;
-    color: #584e9a;
+    color: #ffffff;
     font-weight: bold;
     font-size: calc(1vh + 1vw);
     margin-top: 5vh;
     margin-left: 42vw;
     width: 15vw;
     height: 5vw;
+    border-width: 0;
 }
 
 #signInButton:hover {
-    background-color: #d686d7;
+    background-color: #018c8c;
 }
