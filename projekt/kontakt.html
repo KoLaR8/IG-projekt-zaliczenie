@@ -42,13 +42,34 @@
         </div>
     </nav>
     </header>
-    <div class = " d-flex justify-content-center w-100">
-        <div class ="d-flex justify-content-center w-75 p-5 ">
-            Napisz do nas:<br>example@example.com<br><br>Zadzwoń do nas:<br>123 456 789<br><br>
+    <div class = " d-flex justify-content-center w-100 " >
+        <div class="w-100">
+            <div class = "d-flex justify-content-center p-3" ><h3>Formularz zgłoszeniowy</h3></div>
+            <div class = "d-flex justify-content-center p-3" >
+                <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <input style="background-color: #a4ace7; color: #d686d7; border: 0;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="Temat" class="form-label">Temat</label>
+                      <input style="background-color: #a4ace7; color: #d686d7; border: 0;" type="text" class="form-control" id="temat">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1">Wiadomość</label>
+                        <textarea style="background-color: #a4ace7; color: #21204c; border: 0;" class="form-control" id="exampleFormControlTextarea1" rows="10" cols="100"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="background-color: #58baa7;  color: #21204c;">Submit</button>
+                  </form>
+            </div>
         </div>
-        <div class = "col-8 d-flex justify-content-center w-75 p-3" >
+        
+    </div>
+    <div class = " d-flex justify-content-center w-100">
+        
+        <div class = "col-8 d-flex justify-content-center w-75 " >
             <div class="accordion accordion-flush w-75"  id="accordionFlushExample">
-                <div class = "d-flex justify-content-center p-3" ><h3>FAQ</h3></div>
+                <div class = "d-flex justify-content-center" ><h3>FAQ</h3></div>
                 <div class="accordion-item" style="background-color: #584e9a;">
                   <h2 class="accordion-header" id="flush-headingOne">
                     <button class="accordion-button collapsed" style="background-color: #584e9a; color: #d686d7;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -81,29 +102,12 @@
                 </div>
               </div>
         </div>
-    </div>
-    <div class = " d-flex justify-content-center w-100 p-3" >
-        <div class="w-100">
-            <div class = "d-flex justify-content-center p-3" ><h3>Formularz zgłoszeniowy</h3></div>
-            <div class = "d-flex justify-content-center p-3" >
-                <form>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input style="background-color: #584e9a; color: #d686d7; border: 0;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                      <label for="Temat" class="form-label">Temat</label>
-                      <input style="background-color: #584e9a; color: #d686d7; border: 0;" type="text" class="form-control" id="temat">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1">Wiadomość</label>
-                        <textarea style="background-color: #584e9a; color: #d686d7; border: 0;" class="form-control" id="exampleFormControlTextarea1" rows="10" cols="100"></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="background-color: #58baa7;  color: #21204c;">Submit</button>
-                  </form>
-            </div>
+        <div class ="d-flex justify-content-center w-100 p-4">
+            <br>Napisz do nas:<br>example@example.com<br><br>Zadzwoń do nas:<br>123 456 789<br><br>
         </div>
     </div>
+    
+    
         
     </body>
 </html>
