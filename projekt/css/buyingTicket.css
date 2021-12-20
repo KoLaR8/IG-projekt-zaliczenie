@@ -15,7 +15,9 @@ label{
     margin-bottom: 6vw;
 }
 
-
+#paymentButton{
+    justify-content: right;
+}
 #paymentButton button{
     width: 40%;
     height: 100px;
@@ -23,6 +25,8 @@ label{
     border: none;
     background-color: #58baa7;
     margin-right: 0;
+    margin-left: 20%;
+    color: #21204c;
 }
 
 #paymentButton button:hover{
@@ -32,19 +36,16 @@ label{
 #selectDiscount{
     margin-top: 2vw;
     margin-bottom: 2vw;
-    margin-right: 11%;
-    float: left;
+    margin-left: 52%;
+    float: none;
     width: 27%;
 }
 
 #selectDiscount select{
-    background-color: #d686d7;
+    background-color: #a4ace7;
     border: none;
 }
 
-#selectDiscount select:hover{
-    background-color: white;
-}
 .form-group{
     width: 98.5%;
     margin-top: 2vw;
@@ -53,8 +54,8 @@ label{
 
 .form-control{
     width: 60%;
-    background-color: #d686d7;
     border:none;
+    background-color: #a4ace7;
 }
 
 #ticketPoolAvailable{
@@ -63,12 +64,12 @@ label{
     margin-right: 1.5%;
     margin-bottom: 2vw;
     float: left;
-    background-color: #9932cc;
+    background-color: #584e9a;
     display: grid;
-    grid-template-columns: 50% 35% 5% 5% 5%;
+    grid-template-columns: 45% 5% 35% 5% 5% 5%;
     padding: 20px;
     grid-template-areas:
-        "poolName ticketPrice minus number plus";
+        "poolName ticketPrice currency minus number plus";
     text-align: center;
 }
 
@@ -81,9 +82,18 @@ label{
     justify-content: center;
 }
 
+#currency{
+    grid-area: currency;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    color: #58baa7;
+}
+
+
 .plusSign{
     color: black;
-    background-color: #d686d7;
+    background-color: #a4ace7;
     grid-area: plus;
     align-items: center;
     display: flex;
@@ -92,7 +102,7 @@ label{
 
 .minusSign{
     color: black;
-    background-color: #d686d7;
+    background-color: #a4ace7;
     grid-area: minus;
     align-items: center;
     display: flex;
@@ -101,6 +111,7 @@ label{
 
 .plusSign:hover, .minusSign:hover{
     cursor: pointer;
+    background-color: #58baa7;
 }
 .numberOfTickets{
     grid-area: number;
@@ -116,4 +127,20 @@ label{
 }
 div p {
     margin: 0
+}
+
+#Price{
+    font-size: xx-large;
+    float: left ;
+    height: 3vw;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+#Price p{
+    float: left;
+}
+#finalPrice{
+    font-size: xx-large;
 }
