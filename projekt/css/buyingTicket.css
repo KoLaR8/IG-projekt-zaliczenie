@@ -57,3 +57,63 @@ label{
     border:none;
 }
 
+#ticketPoolAvailable{
+    width: 79%;
+    height: 5vw;
+    margin-right: 1.5%;
+    margin-bottom: 2vw;
+    float: left;
+    background-color: #9932cc;
+    display: grid;
+    grid-template-columns: 50% 35% 5% 5% 5%;
+    padding: 20px;
+    grid-template-areas:
+        "poolName ticketPrice minus number plus";
+    text-align: center;
+}
+
+.ticketPoolPrice{
+
+    color: #58baa7;
+    grid-area: ticketPrice;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.plusSign{
+    color: black;
+    background-color: #d686d7;
+    grid-area: plus;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.minusSign{
+    color: black;
+    background-color: #d686d7;
+    grid-area: minus;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.plusSign:hover, .minusSign:hover{
+    cursor: pointer;
+}
+.numberOfTickets{
+    grid-area: number;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.ticketPoolName{
+    grid-area: poolName;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+div p {
+    margin: 0
+}
