@@ -11,13 +11,13 @@
     <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
     <script src="js/loginScripts.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styleAddEvent.css">
+    <link rel="stylesheet" href="css/styleLogin.css">
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light your-bg-navbar fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="loginPage.html" onclick="redirectToProperMainPage(); return false"><b>EVENTS.com</b></a>
+            <a class="navbar-brand" href="loginPage.html" onclick="redirectToProperMainPage()"><b>EVENTS.com</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,34 +52,14 @@
     </nav>
 </header>
 
-
-<div class="data">
-
-
-    <label class="form">Nazwa</label> <span class="input" role="textbox" contenteditable></span>
-    <label class="form">Artysta</label> <span class="input" role="textbox" contenteditable></span>
-    <label class="form">Opis</label> <span class="input" role="textbox" contenteditable></span>
-    <label class="form">Organizator</label> <span class="input" role="textbox" contenteditable></span>
-
-
-</div>
-<div class="ticket_pool">
-
-</div>
-<div id="photo">
-    <p>Zdjecie</p>
-
-    <div>
-        <input type="file" name="nazwa" accept="image/png,image/jpeg,image/gif"/>
-    </div>
-
-</div>
-<div id="localization">
-    <p>Lokalizacja</p>
-</div>
-<div id="verification-button">
-    <button type="button" class="btn btn-primary btn-lg">Przekaż do weryfikacji</button>
-</div>
+<button id="userLogin" class="userChooseButton" onclick="chooseAccountAndLogin(this)">Logowanie Użytkownika</button>
+<button id="organizerLogin" class="userChooseButton" onclick="chooseAccountAndLogin(this)">Logowanie Organizatora
+</button>
+<a href="loginPage.html" id="backButton" class="loginButton">Wybór typu konta</a>
+<div id="loggingInAsType"></div>
+<input placeholder="Login" id="login" class="loginLabel">
+<input type="password" placeholder="Hasło" id="password" class="loginLabel">
+<button id="signInButton" class="loginButton" onclick="login()">Zaloguj</button>
 
 </body>
 </html>
