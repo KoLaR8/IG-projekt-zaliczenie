@@ -4,12 +4,7 @@
     width: 100%;
     height: auto;
 }
-img{
-    position: relative;
-    margin-right: 35%;
-    width: 20vw;
 
-}
 .aa{
     margin-right: 11%;
     position: relative;
@@ -79,18 +74,7 @@ img{
     outline-width: 0;
     margin-bottom: 30px;
 }
-/*.loadPhoto{*/
-/*    opacity: 1;*/
-/*    width: 34%;*/
-/*    height: 6vw;*/
-/*    margin-left: 5%;*/
-/*    background-color: #d686d7;*/
-/*}*/
-/*#map {*/
-/*    width: 20%;*/
-/*    height: 20%;*/
 
-/*}*/
 #photo{
     position: relative;
     margin-top: 20%;
@@ -100,6 +84,9 @@ img{
 #localization{
     margin-top: 5%;
     margin-left: 10%;
+}
+iframe{
+    width: 22.5%;
 }
 label{
 
