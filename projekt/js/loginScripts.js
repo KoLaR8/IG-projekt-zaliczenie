@@ -9,8 +9,7 @@ function chooseAccountAndLogin(element) {
     let loggingInAsType = document.getElementById("loggingInAsType")
     if (id === "organizerLogin") {
         loggingInAsType.innerText = "Logowanie jako Organizator"
-    }
-    else {
+    } else {
         loggingInAsType.innerText = "Logowanie jako Użytkownik"
     }
     loggingInAsType.style.display = "initial"
@@ -25,25 +24,31 @@ function chooseAccountAndLogin(element) {
 function login() {
     let login = document.getElementById("login")
     let password = document.getElementById("password")
-    if(login.value === "test" && password.value === "test") {
+    if (login.value === "test" && password.value === "test") {
         if (id === "organizerLogin") {
-            window.location = "mainPageOrganizer.html"
+            document.location.href = "mainPageOrganizer.html"
             window.sessionStorage.setItem("loginStatus", "organizer")
         } else {
-            window.location = "mainPageUser.html"
+            document.location.href = "mainPageUser.html"
             window.sessionStorage.setItem("loginStatus", "user")
         }
-    }
-    else {
+    } else {
         alert("Niepoprawne dane logowania!")
     }
 }
 
+function logOut() {
+    window.sessionStorage.setItem("loginStatus", null)
+}
+
 function redirectToProperMainPage() {
-    if(window.sessionStorage.getItem("loginStatus") === "organizer") {
+    if (window.sessionStorage.getItem("loginStatus") === "organizer") {
         window.location.href = "mainPageOrganizer.html"
     }
-    else {
+    else if (window.sessionStorage.getItem("loginStatus") === "user") {
         window.location.href = "mainPageUser.html"
+    }
+    else {
+        window.location.href = "mainPageLoggedOut.html"
     }
 }

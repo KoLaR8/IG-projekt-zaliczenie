@@ -1,4 +1,5 @@
 <!doctype html>
+<meta charset="UTF-8">
 <html>
 <head>
     <title>EVENTS.com</title>
@@ -8,6 +9,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+    <script src="js/loginScripts.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleMainPageOrganizer.css">
 </head>
@@ -26,7 +28,7 @@
                         <a class="nav-link" href="#">Kalendarz Wydarzeń</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Kontakt</a>
+                        <a class="nav-link" href="kontakt.html">Kontakt</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -41,7 +43,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Moje Bilety</a></li>
-                            <li><a class="dropdown-item" href="loginPage.html">Wyloguj</a></li>
+                            <li><a class="dropdown-item" href="mainPageLoggedOut.html" onclick="logOut()">Wyloguj</a></li>
                         </ul>
                     </li>
 
