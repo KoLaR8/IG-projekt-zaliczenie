@@ -1,10 +1,67 @@
 .data{
     margin-top: 3%;
     position: relative;
+    width: 100%;
+    height: auto;
+}
+img{
+    position: relative;
+    margin-right: 35%;
+    width: 20vw;
 
 }
-p{
+.aa{
+    margin-right: 11%;
     position: relative;
+}
+#add-photo-button button{
+    width: 34%;
+    height: 7vw;
+    font-size: 50px;
+    background-color: #d686d7;
+    margin-left: 5%;
+    border-width: 0;
+}
+
+
+
+#ticketPool{
+    width: 70%;
+    height: 4vw;
+    margin-left: 10%;
+    margin-bottom: 3vw;
+    float: left;
+    background-color: #584e9a;
+    position: relative;
+    display: grid;
+
+    grid-template-areas:
+        "poolName add-pool-button";
+    text-align: center;
+}
+
+.add-pool-button button{
+    width: 15%;
+    height: 3.5vw;
+    font-size: 25px;
+    background-color: #d686d7;
+    margin-right: 80%;
+    border-width: 0;
+
+}
+.ticketPoolName{
+    grid-area: poolName;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 80%;
+    padding-top: 1vw;
+}
+.add-pool-button{
+    grid-area: add-pool-button ;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 .input{
     background-color: #d686d7;
@@ -22,13 +79,23 @@ p{
     outline-width: 0;
     margin-bottom: 30px;
 }
-.loadPhoto button{
-    background-color: #d686d7;
-}
+/*.loadPhoto{*/
+/*    opacity: 1;*/
+/*    width: 34%;*/
+/*    height: 6vw;*/
+/*    margin-left: 5%;*/
+/*    background-color: #d686d7;*/
+/*}*/
+/*#map {*/
+/*    width: 20%;*/
+/*    height: 20%;*/
+
+/*}*/
 #photo{
     position: relative;
     margin-top: 20%;
     margin-left: 10%;
+    width: 60%;
 }
 #localization{
     margin-top: 5%;
@@ -37,10 +104,10 @@ p{
 label{
 
     display: block;
-    width: 10%;
+    width: 0%;
     float: left;
     margin-right: 20%;
-    margin-inside: 10px;
+    /*margin-inside: 10px;*/
     color: #d686d7;;
     position: relative;
 }

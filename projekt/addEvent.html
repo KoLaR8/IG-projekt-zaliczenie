@@ -43,7 +43,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Moje Bilety</a></li>
-                            <li><a class="dropdown-item" href="mainPageLoggedOut.html" onclick="logOut()">Wyloguj</a></li>
+                            <li><a class="dropdown-item" href="mainPageLoggedOut.html" onclick="logOut()">Wyloguj</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -64,21 +65,34 @@
 
 
 </div>
-<div class="ticket_pool">
+
+<div class="ticketPool" id="ticketPool">
+    <div class="ticketPoolName" id="poolName"><p>Dodaj Pule </p></div>
+    <div class="add-pool-button">
+        <button>+</button>
+    </div>
+
 
 </div>
 <div id="photo">
-    <p>Zdjecie</p>
-
-
-    <div>
-        <input class="loadPhoto" type="file" name="nazwa" accept="image/png,image/jpeg,image/gif"/>
+    <label class="aa">Zdjecie</label>
+    <div id="add-photo-button">
+    <button>+</button>
+<!--        <input class="loadPhoto" type="file" accept="image/png,image/jpeg,image/gif">-->
     </div>
+
+
 
 </div>
 <div id="localization">
-    <p>Lokalizacja</p>
+    <label class="aa">Lokalizacja</label>
+    <a href="map.html"><img src="photos/map.PNG"></a>
+
 </div>
+
+
+
+
 <div id="verification-button">
     <button type="button" class="btn btn-primary btn-lg">Przekaż do weryfikacji</button>
 </div>
