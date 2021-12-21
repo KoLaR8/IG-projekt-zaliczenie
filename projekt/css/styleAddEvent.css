@@ -9,19 +9,34 @@
     margin-right: 11%;
     position: relative;
 }
-#add-photo-button button{
-    width: 34%;
-    height: 7vw;
-    font-size: 50px;
-    background-color: #d686d7;
-    margin-left: 5%;
-    border-width: 0;
+
+
+.form-group{
+
+    margin-bottom:1vw;
+    margin-left: 10%;
+
 }
 
+.form-control{
+    position: relative;
+    float: right;
+    margin-right: 22%;
+    width: 66%;
+    border:none;
+    background-color: #a4ace7;
+    height: 2vw;
 
-
+}
+.form-horizontal{
+    margin-right: 10%;
+    width: 60%;
+    border:none;
+    background-color: #a4ace7;
+    height: 3vw;
+}
 #ticketPool{
-    width: 70%;
+    width: 72%;
     height: 4vw;
     margin-left: 10%;
     margin-bottom: 3vw;
@@ -29,16 +44,16 @@
     background-color: #584e9a;
     position: relative;
     display: grid;
-
+    font-size: 1.5vw;
     grid-template-areas:
         "poolName add-pool-button";
     text-align: center;
+
 }
 
-.add-pool-button button{
+#ticketPool button{
     width: 15%;
-    height: 3.5vw;
-    font-size: 25px;
+    height: 3.3vw;
     background-color: #d686d7;
     margin-right: 80%;
     border-width: 0;
@@ -77,10 +92,19 @@
 
 #photo{
     position: relative;
-    margin-top: 20%;
+    /*margin-top: 20%;*/
     margin-left: 10%;
     width: 60%;
 }
+#add-photo-button button{
+    width: 34%;
+    height: 7vw;
+    font-size: 4vw;
+    background-color: #d686d7;
+    margin-left: 5%;
+    border-width: 0;
+}
+
 #localization{
     margin-top: 5%;
     margin-left: 10%;
@@ -98,12 +122,7 @@ label{
     color: #d686d7;;
     position: relative;
 }
-.form{
-    float: left;
-    position: relative;
-    margin-bottom: -30px;
-    margin-left: 10%;
-}
+
 #verification-button{
     width: 80%;
     margin-left: 15%;
