@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Sty 2022, 15:31
+-- Czas generowania: 05 Sty 2022, 23:12
 -- Wersja serwera: 10.4.19-MariaDB
 -- Wersja PHP: 7.3.28
 
@@ -62,6 +62,18 @@ CREATE TABLE `events` (
   `organizer` varchar(30) COLLATE utf32_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci;
 
+--
+-- Zrzut danych tabeli `events`
+--
+
+INSERT INTO `events` (`event_id`, `name`, `city`, `street`, `building_number`, `image`, `description`, `date`, `organizer`) VALUES
+(1, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasd', '2020-10-10 00:00:00', 'Jakis smiec'),
+(2, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasd', '2020-10-10 00:00:00', 'Jakis smiec'),
+(3, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssss', '2020-10-10 00:00:00', 'Jakis smiec'),
+(4, 'asdasddssda', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10 00:00:00', 'Jakis smiec'),
+(5, 'asdasddssda', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10 00:00:00', 'Jakis smiec'),
+(6, 'asdasddssdaa', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10 00:00:00', 'Jakis smiec');
+
 -- --------------------------------------------------------
 
 --
@@ -85,8 +97,25 @@ CREATE TABLE `pools` (
 CREATE TABLE `tickets` (
   `ticket_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `name` varchar(30) COLLATE utf32_polish_ci DEFAULT NULL,
+  `surname` varchar(30) COLLATE utf32_polish_ci DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `numberOfBoughtTickets` int(11) DEFAULT NULL,
+  `mail` varchar(30) COLLATE utf32_polish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci;
+
+--
+-- Zrzut danych tabeli `tickets`
+--
+
+INSERT INTO `tickets` (`ticket_id`, `event_id`, `user_id`, `name`, `surname`, `price`, `numberOfBoughtTickets`, `mail`) VALUES
+(2, 1, 1, 'asd', 'asd', 0, 0, 'asd'),
+(3, 1, 1, 'asd', 'asd', 0, 0, 'asd'),
+(4, 1, 1, 'asd', 'asd', 0, 0, 'asd'),
+(5, 1, 1, 'asdaaaaaaa', 'asdaaaaaaa', 0, 0, 'asdaaaaaaa'),
+(6, 1, 1, 'asdaaaaaaa', 'asdaaaaaaa', 0, 0, 'asdaaaaaaa'),
+(7, 1, 1, 'asdaaaaaaa', 'asdaaaaaaa', 0, 0, 'asdaaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -171,7 +200,7 @@ ALTER TABLE `artists`
 -- AUTO_INCREMENT dla tabeli `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `pools`
@@ -183,7 +212,7 @@ ALTER TABLE `pools`
 -- AUTO_INCREMENT dla tabeli `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
