@@ -12,9 +12,11 @@
     <script src="js/loginScripts.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleAddEvent.css">
+    <script src="js/addTicketPool.js"></script>
 </head>
 <body>
 <header>
+
     <nav class="navbar navbar-expand-lg navbar-light your-bg-navbar fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="mainPageLoggedOut.html" onclick="redirectToProperMainPage(); return false"><b>EVENTS.com</b></a>
@@ -53,7 +55,7 @@
         </div>
     </nav>
 </header>
-
+<div class="grid_kontener">
 
 <div class="data">
 
@@ -79,26 +81,26 @@
     </form>
 
 </div>
-
+<div class="poolKontener">
 <div class="ticketPool" id="ticketPool">
     <div class="ticketPoolName" id="poolName"><p>Dodaj Pule </p></div>
     <div class="add-pool-button">
-        <button>+</button>
+        <button onclick="addPool()">+</button>
+
     </div>
-
-
 </div>
-<div id="photo">
+</div>
+
+<div class="photo" id="photo">
     <label class="aa">Zdjecie</label>
     <div id="add-photo-button">
-    <button>+</button>
+    <button onclick="addPhoto()">+</button>
 <!--        <input class="loadPhoto" type="file" accept="image/png,image/jpeg,image/gif">-->
     </div>
 
 
-
 </div>
-<div id="localization">
+<div class="localization" id="localization">
     <label class="aa">Lokalizacja</label>
 <!--    <a href="map.html"><img src="photos/map.PNG"></a>-->
     <iframe src="map.html"></iframe>
@@ -107,9 +109,9 @@
 
 
 
-<div id="verification-button">
+<div class="verification-button" id="verification-button">
     <button type="button" class="btn btn-primary btn-lg">Przekaż do weryfikacji</button>
 </div>
-
+</div>
 </body>
 </html>
