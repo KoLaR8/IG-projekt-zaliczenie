@@ -8,6 +8,12 @@ var connection = mysql.createConnection({
     database: "events.com"
 });
 
+connection.connect(function (err) {
+    if (err) throw err;
+    console.log("connected to database: events.com");
+});
+
+
 var server = http.createServer(function (request, response) {
 
     response.writeHead(200, {"Content-Type": "text/plain"});
@@ -21,19 +27,18 @@ var server = http.createServer(function (request, response) {
         });
         request.on('end', () => {
             const json = JSON.parse(data)
-            connection.connect(function (err){
+
+            let sql;
+            if(json.DBTable === "events"){
+                sql = `INSERT INTO events (name, city, street, building_number, image, description, date, organizer) VALUES( '${json.name}', 'Krakow', 'Nijaka', '69', null, '${json.description}', '2020-10-10', 'Jakis smiec')`;
+            }
+            if(json.DBTable === "tickets"){
+                sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail) VALUES( 1, 1, '${json.name}', '${json.surname}', '${json.price}', '${json.numberOfBoughtTickets}', '${json.mail}' )`;
+            }
+
+            connection.query(sql, function(err, result){
                 if(err) throw err;
-                console.log("connected to database: events.com");
-                let sql;
-                if(json.DBTable === "events"){
-                    sql = `INSERT INTO events (name, city, street, building_number, image, description, date, organizer) VALUES( '${json.name}', 'Krakow', 'Nijaka', '69', null, '${json.description}', '2020-10-10', 'Jakis smiec')`;
-                }
-
-                connection.query(sql, function(err, result){
-                    if(err) throw err;
-                    console.log("1 record inserted.");
-                });
-
+                console.log("1 record inserted.");
             });
             response.end()
         });

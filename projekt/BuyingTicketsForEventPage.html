@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/buyingTicket.css">
   <script type="text/javascript" src="js/ticketNumber.js"></script>
+  <script type="text/javascript" src="js/buyTickets.js"></script>
 </head>
 <body>
 <header>
@@ -80,7 +81,7 @@
         </div>
       <div id="Price"><p>Do zapłaty: </p><p id="finalPrice"> 0 </p> <p>zł</p></div>
       <div class ="button" id ="paymentButton">
-        <button type="button" class="btn btn-primary btn-lg">Przejdź do płatności</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="buyTickets()">Przejdź do płatności</button>
       </div>
     </div>
   </form>
