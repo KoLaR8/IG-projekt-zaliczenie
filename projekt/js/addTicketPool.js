@@ -17,7 +17,6 @@ function addPool(element) {
     el.appendChild(price_input)
     el.appendChild(number)
     el.appendChild(number_input)
-
     parent.appendChild(el)
 
 }
@@ -28,10 +27,28 @@ function addPhoto() {
     // var el = document.getElementsByClassName("photo")
     // el.appendChild(img)
     // document.getElementById("load").innerHTML = "<img src=''>";
-
+    alert("AAAAAAAA")
     var img = document.createElement("img");
     img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
     var src = document.getElementById("");
     src.appendChild(img);
+}
+
+function verify() {
+
+    const name = document.getElementById("exampleFormControlTextarea1").value
+    const artist = document.getElementById("exampleFormControlTextarea2").value
+    const description = document.getElementById("exampleFormControlTextarea3").value
+    const organizer = document.getElementById("exampleFormControlTextarea4").value
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://localhost:8000', true);
+    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.send(JSON.stringify({
+        DBTable: "events",
+        name: name,
+        description: description,
+        organizer: organizer
+    }));
 }
 

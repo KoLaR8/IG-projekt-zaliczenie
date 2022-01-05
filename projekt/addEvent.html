@@ -57,61 +57,61 @@
 </header>
 <div class="grid_kontener">
 
-<div class="data">
+    <div class="data">
 
 
-
-    <form>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Nazwa</label>
-            <textarea class="form-horizontal" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Artysta </label>
-            <textarea class="form-horizontal" id="exampleFormControlTextarea2" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Opis</label>
-            <textarea class="form-horizontal" id="exampleFormControlTextarea3" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Organizator</label>
-            <textarea class="form-horizontal" id="exampleFormControlTextarea4" rows="3"></textarea>
-        </div>
-    </form>
-
-</div>
-<div class="poolKontener">
-<div class="ticketPool" id="ticketPool">
-    <div class="ticketPoolName" id="poolName"><p>Dodaj Pule </p></div>
-    <div class="add-pool-button">
-        <button onclick="addPool()">+</button>
+        <!--zrefaktorować nazwy labelek na znaczące coś-->
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Nazwa</label>
+                <textarea class="form-horizontal" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Artysta </label>
+                <textarea class="form-horizontal" id="exampleFormControlTextarea2" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Opis</label>
+                <textarea class="form-horizontal" id="exampleFormControlTextarea3" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Organizator</label>
+                <textarea class="form-horizontal" id="exampleFormControlTextarea4" rows="3"></textarea>
+            </div>
+        </form>
 
     </div>
-</div>
-</div>
+    <div class="poolKontener">
+        <div class="ticketPool" id="ticketPool">
+            <div class="ticketPoolName" id="poolName"><p>Dodaj Pule </p></div>
+            <div class="add-pool-button">
+                <button onclick="addPool()">+</button>
 
-<div class="photo" id="photo">
-    <label class="aa">Zdjecie</label>
-    <div id="add-photo-button">
-    <button onclick="addPhoto()">+</button>
-<!--        <input class="loadPhoto" type="file" accept="image/png,image/jpeg,image/gif">-->
+            </div>
+        </div>
+    </div>
+
+    <div class="photo" id="photo">
+        <label class="aa">Zdjecie</label>
+        <div id="add-photo-button">
+            <label>
+                <input onchange=addPhoto() type="file" id="input" style="display: none">+
+            </label>
+            <!--        <input class="loadPhoto" type="file" accept="image/png,image/jpeg,image/gif">-->
+        </div>
+
+
+    </div>
+    <div class="localization" id="localization">
+        <label class="aa">Lokalizacja</label>
+        <!--    <a href="map.html"><img src="photos/map.PNG"></a>-->
+        <iframe src="map.html"></iframe>
     </div>
 
 
-</div>
-<div class="localization" id="localization">
-    <label class="aa">Lokalizacja</label>
-<!--    <a href="map.html"><img src="photos/map.PNG"></a>-->
-    <iframe src="map.html"></iframe>
-</div>
-
-
-
-
-<div class="verification-button" id="verification-button">
-    <button type="button" class="btn btn-primary btn-lg">Przekaż do weryfikacji</button>
-</div>
+    <div class="verification-button" id="verification-button">
+        <button type="button" class="btn btn-primary btn-lg" onclick="verify()">Przekaż do weryfikacji</button>
+    </div>
 </div>
 </body>
 </html>
