@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 21 Gru 2021, 19:39
+-- Czas generowania: 05 Sty 2022, 15:31
 -- Wersja serwera: 10.4.19-MariaDB
 -- Wersja PHP: 7.3.28
 
@@ -52,12 +52,28 @@ CREATE TABLE `artists_in_events` (
 
 CREATE TABLE `events` (
   `event_id` int(11) NOT NULL,
+  `name` varchar(30) COLLATE utf32_polish_ci NOT NULL,
   `city` varchar(50) COLLATE utf32_polish_ci NOT NULL,
   `street` varchar(50) COLLATE utf32_polish_ci NOT NULL,
   `building_number` varchar(5) COLLATE utf32_polish_ci NOT NULL,
-  `image` longblob NOT NULL,
+  `image` longblob DEFAULT NULL,
   `description` text COLLATE utf32_polish_ci NOT NULL,
-  `data` datetime NOT NULL
+  `date` datetime NOT NULL,
+  `organizer` varchar(30) COLLATE utf32_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `pools`
+--
+
+CREATE TABLE `pools` (
+  `pool_id` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf32_polish_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `number_of_tickets` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci;
 
 -- --------------------------------------------------------
@@ -89,6 +105,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci;
 
 --
+-- Zrzut danych tabeli `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `surname`, `email`, `login`, `password`, `organizer`) VALUES
+(1, 'Adam', 'Nowak', 'adam.nowak@email.com', 'adamN', 'haslo123', 0),
+(2, 'Borys', 'Szyc', 'bor.szyc@email.com', 'borysS', 'haslo123', 1),
+(3, 'Tomasz', 'Karolak', 'bor.szyc@email.com', 'borysS', 'haslo123', 1),
+(4, 'Tomasz', 'Karolak', 'bor.szyc@email.com', 'borysS', 'haslo123', 1);
+
+--
 -- Indeksy dla zrzutów tabel
 --
 
@@ -110,6 +136,12 @@ ALTER TABLE `artists_in_events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
+
+--
+-- Indeksy dla tabeli `pools`
+--
+ALTER TABLE `pools`
+  ADD PRIMARY KEY (`pool_id`);
 
 --
 -- Indeksy dla tabeli `tickets`
@@ -142,6 +174,12 @@ ALTER TABLE `events`
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT dla tabeli `pools`
+--
+ALTER TABLE `pools`
+  MODIFY `pool_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT dla tabeli `tickets`
 --
 ALTER TABLE `tickets`
@@ -151,7 +189,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ograniczenia dla zrzutów tabel
