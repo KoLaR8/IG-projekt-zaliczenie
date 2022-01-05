@@ -1,22 +1,39 @@
+.grid_kontener{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-areas:
+    "data"
+    "ticketPool"
+    "test"
+    "photo"
+    "localization"
+    "verification"
+
+}
+
+/*///////////////////////////////////////////////*/
 .data{
     margin-top: 3%;
     position: relative;
     width: 100%;
     height: auto;
+    grid-area: data;
 }
-
-.aa{
-    margin-right: 11%;
-    position: relative;
-}
-
-
 .form-group{
 
     margin-bottom:1vw;
     margin-left: 10%;
 
 }
+.form-horizontal{
+    margin-right: 10%;
+    width: 60%;
+    border:none;
+    background-color: #a4ace7;
+    height: 3vw;
+}
+
+
 
 .form-control{
     position: relative;
@@ -28,18 +45,17 @@
     height: 2vw;
 
 }
-.form-horizontal{
-    margin-right: 10%;
-    width: 60%;
-    border:none;
-    background-color: #a4ace7;
-    height: 3vw;
-}
-#ticketPool{
+
+
+/*///////////////////////////////////////////////*/
+
+.ticketPool{
+    grid-area: ticketPool;
+
     width: 72%;
-    height: 4vw;
+    height: auto;
     margin-left: 10%;
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
     float: left;
     background-color: #584e9a;
     position: relative;
@@ -47,18 +63,14 @@
     font-size: 1.5vw;
     grid-template-areas:
         "poolName add-pool-button";
+        "test test"
     text-align: center;
 
 }
+/*#ticketPool{*/
 
-#ticketPool button{
-    width: 15%;
-    height: 3.3vw;
-    background-color: #d686d7;
-    margin-right: 80%;
-    border-width: 0;
 
-}
+/*}*/
 .ticketPoolName{
     grid-area: poolName;
     align-items: center;
@@ -67,12 +79,39 @@
     margin-left: 80%;
     padding-top: 1vw;
 }
+#ticketPool button{
+    width: 15%;
+    height: 3.3vw;
+    background-color: #d686d7;
+    margin-right: 80%;
+    border-width: 0;
+
+}
+
 .add-pool-button{
     grid-area: add-pool-button ;
     align-items: center;
     display: flex;
     justify-content: center;
+    z-index: 2;
 }
+
+.newPool{
+    width: 72%;
+    height: 4vw;
+    margin-left: 10%;
+    margin-bottom: 2vw;
+    float: left;
+    background-color: #584e9a;
+    font-size: 1.5vw;
+    /*z-index: 2;*/
+    text-align: center;
+    display: flex;
+
+}
+
+/*///////////////////////////////////////////////*/
+
 .input{
     background-color: #d686d7;
     display: block;
@@ -89,12 +128,22 @@
     outline-width: 0;
     margin-bottom: 30px;
 }
-
-#photo{
+.aa{
+    margin-right: 11%;
     position: relative;
+}
+/*///////////////////////////////////////////////*/
+.photo{
+    grid-area: photo;
+    position: relative;
+}
+#photo{
+
     /*margin-top: 20%;*/
     margin-left: 10%;
     width: 60%;
+    /*grid-area: photo;*/
+
 }
 #add-photo-button button{
     width: 34%;
@@ -105,9 +154,12 @@
     border-width: 0;
 }
 
-#localization{
+/*///////////////////////////////////////////////*/
+
+.localization{
     margin-top: 5%;
     margin-left: 10%;
+    grid-area: localization;
 }
 iframe{
     width: 22.5%;
@@ -123,11 +175,15 @@ label{
     position: relative;
 }
 
-#verification-button{
+/*///////////////////////////////////////////////*/
+
+.verification-button{
     width: 80%;
     margin-left: 15%;
     margin-right: 5%;
+    grid-area: verification;
 }
+
 #verification-button button{
     position: relative;
     float: right;
@@ -140,7 +196,6 @@ label{
     font-size: 25px;
 }
 #verification-button button:hover{
-
 
     background-color: #018c8c;
 }
