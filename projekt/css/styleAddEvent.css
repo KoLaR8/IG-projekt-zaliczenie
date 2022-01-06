@@ -84,6 +84,10 @@
     "town street buildingNumber"
 
 }
+.eventLocalization input {
+    color: black;
+
+}
 .town{
     grid-area: town;
 

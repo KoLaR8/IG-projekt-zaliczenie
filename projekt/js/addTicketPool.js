@@ -32,9 +32,9 @@ function verify() {
     const artist = document.getElementById("exampleFormControlTextarea2").value
     const description = document.getElementById("exampleFormControlTextarea3").value
     const organizer = document.getElementById("exampleFormControlTextarea4").value
-    const town = document.getElementById("inputTown").value
+    const city = document.getElementById("inputTown").value
     const street = document.getElementById("inputStreet").value
-    const buildingNr = document.getElementById("inputBuilding").value
+    const building_number = document.getElementById("inputBuilding").value
     const time = document.getElementById("inputTime").value
     const date = document.getElementById("inputDate").value
     const xhr = new XMLHttpRequest();
@@ -43,7 +43,13 @@ function verify() {
     xhr.send(JSON.stringify({
         name: name,
         description: description,
-        organizer: organizer
+        organizer: organizer,
+        city: city,
+        street: street,
+        building_number: building_number,
+        date: date,
+        time: time
+
     }));
 }
 

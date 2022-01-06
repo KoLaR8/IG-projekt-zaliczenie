@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Sty 2022, 23:12
--- Wersja serwera: 10.4.19-MariaDB
--- Wersja PHP: 7.3.28
+-- Czas generowania: 06 Sty 2022, 16:29
+-- Wersja serwera: 10.4.22-MariaDB
+-- Wersja PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,8 @@ CREATE TABLE `events` (
   `building_number` varchar(5) COLLATE utf32_polish_ci NOT NULL,
   `image` longblob DEFAULT NULL,
   `description` text COLLATE utf32_polish_ci NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
   `organizer` varchar(30) COLLATE utf32_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_polish_ci;
 
@@ -66,13 +67,15 @@ CREATE TABLE `events` (
 -- Zrzut danych tabeli `events`
 --
 
-INSERT INTO `events` (`event_id`, `name`, `city`, `street`, `building_number`, `image`, `description`, `date`, `organizer`) VALUES
-(1, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasd', '2020-10-10 00:00:00', 'Jakis smiec'),
-(2, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasd', '2020-10-10 00:00:00', 'Jakis smiec'),
-(3, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssss', '2020-10-10 00:00:00', 'Jakis smiec'),
-(4, 'asdasddssda', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10 00:00:00', 'Jakis smiec'),
-(5, 'asdasddssda', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10 00:00:00', 'Jakis smiec'),
-(6, 'asdasddssdaa', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10 00:00:00', 'Jakis smiec');
+INSERT INTO `events` (`event_id`, `name`, `city`, `street`, `building_number`, `image`, `description`, `date`, `time`, `organizer`) VALUES
+(1, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasd', '2020-10-10', '00:00:00', 'Jakis smiec'),
+(2, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasd', '2020-10-10', '00:00:00', 'Jakis smiec'),
+(3, 'asdasd', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssss', '2020-10-10', '00:00:00', 'Jakis smiec'),
+(4, 'asdasddssda', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10', '00:00:00', 'Jakis smiec'),
+(5, 'asdasddssda', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10', '00:00:00', 'Jakis smiec'),
+(6, 'asdasddssdaa', 'Krakow', 'Nijaka', '69', NULL, 'asdasdasdasdadasdsdssssssssssssssssssssasdasdasd', '2020-10-10', '00:00:00', 'Jakis smiec'),
+(7, 'dsfsdfsd', 'fdsfsdf', 'dsfsdfsdsd', '21', NULL, 'sdfsdfsfdsfd', '2020-10-10', '00:00:00', 'dsfsdfdsfsfsdfsd'),
+(8, 'asdas', 'warszawa', 'starowlisna', '21', NULL, 'ssssssssss', '2014-12-21', '00:00:00', 'aaaaaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -200,7 +203,7 @@ ALTER TABLE `artists`
 -- AUTO_INCREMENT dla tabeli `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT dla tabeli `pools`

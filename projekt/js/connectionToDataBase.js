@@ -30,9 +30,9 @@ var server = http.createServer(function (request, response) {
             console.log(request.url)
 
             if (request.url === "/events") {
-                sql = `INSERT INTO events (name, city, street, building_number, image, description, date, organizer)
-                       VALUES ('${json.name}', 'Krakow', 'Nijaka', '69', null, '${json.description}', '2020-10-10',
-                               'Jakis smiec')`;
+                sql = `INSERT INTO events (name, city, street, building_number, image, description, date, time, organizer)
+                       VALUES ('${json.name}', '${json.city}', '${json.street}', '${json.building_number}', null, '${json.description}', '${json.date}','${json.time}',
+                               '${json.organizer}')`;
             }
             if (request.url === "/tickets") {
                 sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
