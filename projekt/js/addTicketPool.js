@@ -22,16 +22,8 @@ function addPool(element) {
 }
 
 function addPhoto() {
-    // var img = document.createElement("img")
-    // img.src = "photos/map.PNG"
-    // var el = document.getElementsByClassName("photo")
-    // el.appendChild(img)
-    // document.getElementById("load").innerHTML = "<img src=''>";
-    alert("AAAAAAAA")
-    var img = document.createElement("img");
-    img.src = "http://www.google.com/intl/en_com/images/logo_plain.png";
-    var src = document.getElementById("");
-    src.appendChild(img);
+
+
 }
 
 function verify() {
@@ -40,7 +32,11 @@ function verify() {
     const artist = document.getElementById("exampleFormControlTextarea2").value
     const description = document.getElementById("exampleFormControlTextarea3").value
     const organizer = document.getElementById("exampleFormControlTextarea4").value
-
+    const town = document.getElementById("inputTown").value
+    const street = document.getElementById("inputStreet").value
+    const buildingNr = document.getElementById("inputBuilding").value
+    const time = document.getElementById("inputTime").value
+    const date = document.getElementById("inputDate").value
     const xhr = new XMLHttpRequest();
     xhr.open("POST", 'http://localhost:8000', true);
     xhr.setRequestHeader('Content-Type', 'text/plain');

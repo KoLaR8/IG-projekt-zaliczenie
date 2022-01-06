@@ -60,7 +60,6 @@
     <div class="data">
 
 
-        <!--zrefaktorować nazwy labelek na znaczące coś-->
         <form>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Nazwa</label>
@@ -77,6 +76,34 @@
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Organizator</label>
                 <textarea class="form-horizontal" id="exampleFormControlTextarea4" rows="3"></textarea>
+            </div>
+            <div class="eventTime">
+                <div class="date" class="form-group">
+                    <label for="exampleFormControlTextarea1">Data</label>
+                    <input id= "inputDate" placeholder="Select date" type="date" id="example" class="form-horizontal">
+                </div>
+                <div class="time" class="form-group">
+                    <label for="exampleFormControlTextarea1">Godzina</label>
+                    <input id= "inputTime" type="time" id="inputMDEx1" class="form-horizontal">
+
+                </div>
+            </div>
+            <div class="eventLocalization">
+                <div class="town" class="form-group">
+                    <label for="exampleFormControlTextarea1">Miasto</label>
+                    <input id= "inputTown" type="text" class="form-horizontal">
+
+                </div>
+                <div class="street" class="form-group">
+                    <label for="exampleFormControlTextarea1">Ulica</label>
+                    <input id= "inputStreet" type="text" class="form-horizontal">
+
+                </div>
+                <div class="buildingNumber" class="form-group">
+                    <label for="exampleFormControlTextarea1">Numer budynku</label>
+                    <input id= "inputBuilding" type="number"  class="form-horizontal">
+
+                </div>
             </div>
         </form>
 
@@ -95,9 +122,11 @@
         <label class="aa">Zdjecie</label>
         <div id="add-photo-button">
             <label>
-                <input onchange=addPhoto() type="file" id="input" style="display: none">+
+
+                <input onchange=addPhoto() type="file" id="input" style="display: none">
+                <p>+</p>
             </label>
-            <!--        <input class="loadPhoto" type="file" accept="image/png,image/jpeg,image/gif">-->
+
         </div>
 
 
@@ -110,7 +139,7 @@
 
 
     <div class="verification-button" id="verification-button">
-        <button type="button" class="btn btn-primary btn-lg" onclick="verify()">Przekaż do weryfikacji</button>
+        <button type="button" class="btn btn-primary btn-lg">Przekaż do weryfikacji</button>
     </div>
 </div>
 </body>

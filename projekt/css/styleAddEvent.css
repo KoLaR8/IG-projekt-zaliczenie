@@ -1,6 +1,6 @@
-.grid_kontener{
+.grid_kontener {
     display: grid;
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-areas:
     "data"
     "ticketPool"
@@ -12,44 +12,113 @@
 }
 
 /*///////////////////////////////////////////////*/
-.data{
+.data {
     margin-top: 3%;
     position: relative;
     width: 100%;
     height: auto;
     grid-area: data;
 }
-.form-group{
 
-    margin-bottom:1vw;
+.form-group {
+
+    margin-bottom: 1vw;
     margin-left: 10%;
 
 }
-.form-horizontal{
+
+.form-horizontal {
     margin-right: 10%;
     width: 60%;
-    border:none;
+    border: none;
     background-color: #a4ace7;
     height: 3vw;
 }
 
 
-
-.form-control{
+.form-control {
     position: relative;
     float: right;
     margin-right: 22%;
     width: 66%;
-    border:none;
+    border: none;
     background-color: #a4ace7;
     height: 2vw;
 
 }
+.eventTime {
+    color: black;
+    margin-bottom: 1vw;
+    display: grid;
+    grid-template-areas:
+    "date time"
+}
+
+.eventTime input {
+    color: black;
+
+}
+.time {
+    width: 40%;
+    float: right;
+    grid-area: time;
+    margin-left: 26.5%;
+
+}
+.time label{
+
+    margin-right: 30%;
+}
+.date {
+    margin-left: 46%;
+    width: 40%;
+    grid-area: date;
+}
+.eventLocalization{
+    margin-left: 10%;
+    color: black;
+    margin-bottom: 1vw;
+    display: grid;
+    margin-right: 5.5%;
+    grid-template-areas:
+    "town street buildingNumber"
+
+}
+.town{
+    grid-area: town;
+
+}
+.street{
+    grid-area: street;
 
 
+
+}
+
+.buildingNumber{
+    grid-area: buildingNumber;
+    /*margin-right: 35%;*/
+    /*width: 40%;*/
+}
+.eventLocalization input{
+    width: 50%;
+}
+.buildingNumber label{
+    margin-left: 3.5%;
+}
+.buildingNumber input{
+    width: 37%;
+
+}
+.street label{
+    /*margin-right: 20%;*/
+}
+.street input{
+    /*margin-right: 50%;*/
+}
 /*///////////////////////////////////////////////*/
 
-.ticketPool{
+.ticketPool {
     grid-area: ticketPool;
 
     width: 72%;
@@ -63,15 +132,15 @@
     font-size: 1.5vw;
     grid-template-areas:
         "poolName add-pool-button";
-        "test test"
-    text-align: center;
+"test test" text-align: center;
 
 }
+
 /*#ticketPool{*/
 
 
 /*}*/
-.ticketPoolName{
+.ticketPoolName {
     grid-area: poolName;
     align-items: center;
     display: flex;
@@ -79,7 +148,8 @@
     margin-left: 80%;
     padding-top: 1vw;
 }
-#ticketPool button{
+
+#ticketPool button {
     width: 15%;
     height: 3.3vw;
     background-color: #d686d7;
@@ -88,15 +158,15 @@
 
 }
 
-.add-pool-button{
-    grid-area: add-pool-button ;
+.add-pool-button {
+    grid-area: add-pool-button;
     align-items: center;
     display: flex;
     justify-content: center;
     z-index: 2;
 }
 
-.newPool{
+.newPool {
     width: 72%;
     height: 4vw;
     margin-left: 10%;
@@ -112,34 +182,36 @@
 
 /*///////////////////////////////////////////////*/
 
-.input{
-    border-radius: 5px;
-    background-color: #a4ace7;
-    color: #d686d7;
-    display: block;
-    width: 60%;
-    overflow: hidden;
-    resize: both;
-    min-height: 40px;
-    line-height: 20px;
-    float: right;
-    margin-right: 20%;
+/*.input{*/
+/*    border-radius: 5px;*/
+/*    background-color: #a4ace7;*/
+/*    color: #d686d7;*/
+/*    display: block;*/
+/*    width: 60%;*/
+/*    overflow: hidden;*/
+/*    resize: both;*/
+/*    min-height: 40px;*/
+/*    line-height: 20px;*/
+/*    float: right;*/
+/*    margin-right: 20%;*/
 
-    color: black;
-    position: relative;
-    outline-width: 0;
-    margin-bottom: 30px;
-}
-.aa{
+/*    color: black;*/
+/*    position: relative;*/
+/*    outline-width: 0;*/
+/*    margin-bottom: 30px;*/
+/*}*/
+.aa {
     margin-right: 11%;
     position: relative;
 }
+
 /*///////////////////////////////////////////////*/
-.photo{
+.photo {
     grid-area: photo;
     position: relative;
 }
-#photo{
+
+#photo {
 
     /*margin-top: 20%;*/
     margin-left: 10%;
@@ -147,7 +219,8 @@
     /*grid-area: photo;*/
 
 }
-#add-photo-button label{
+
+#add-photo-button label {
     width: 34%;
     height: 7vw;
     font-size: 4vw;
@@ -155,19 +228,22 @@
     color: BLACK;
     margin-left: 5%;
     border-width: 0;
+    text-align: center;
 }
 
 /*///////////////////////////////////////////////*/
 
-.localization{
+.localization {
     margin-top: 5%;
     margin-left: 10%;
     grid-area: localization;
 }
-iframe{
+
+iframe {
     width: 22.5%;
 }
-label{
+
+label {
 
     display: block;
     width: 0%;
@@ -180,14 +256,14 @@ label{
 
 /*///////////////////////////////////////////////*/
 
-.verification-button{
+.verification-button {
     width: 80%;
     margin-left: 15%;
     margin-right: 5%;
     grid-area: verification;
 }
 
-#verification-button button{
+#verification-button button {
     position: relative;
     float: right;
     margin-right: 20%;
@@ -198,7 +274,8 @@ label{
     width: 40%;
     font-size: 25px;
 }
-#verification-button button:hover{
+
+#verification-button button:hover {
 
     background-color: #018c8c;
 }
