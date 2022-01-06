@@ -1,7 +1,7 @@
-var mysql = require("mysql");
-var http = require('http');
+const mysql = require("mysql");
+const http = require('http');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
@@ -14,11 +14,20 @@ connection.connect(function (err) {
 });
 
 
-var server = http.createServer(function (request, response) {
+const server = http.createServer(function (request, response) {
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin" : "*"});
     let sql;
     if (request.method === "GET") {
+        if (request.url === "/events") {
+            sql = `SELECT * FROM events`;
+        }
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("Selected " + result.length + " records")
+            response.end(JSON.stringify(result));
+        });
+
 
     } else if (request.method === "POST") {
         let data = ""

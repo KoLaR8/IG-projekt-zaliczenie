@@ -1,18 +1,19 @@
 <!doctype html>
 <meta charset="UTF-8">
 <html lang="pl">
-    <head>
-        <meta charset ="utf-8">
-        <title>EVENTS.com</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
-        <script src="js/loginScripts.js"></script>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light your-bg-navbar fixed-top">
+<head>
+    <meta charset ="utf-8">
+    <title>EVENTS.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+    <script src="js/loginScripts.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/calendar.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light your-bg-navbar fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="mainPageLoggedOut.html" onclick="redirectToProperMainPage(); return false"><b>EVENTS.com</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +44,8 @@
             </div>
         </div>
     </nav>
-    </header>
-
-    </body>
+</header>
+<label id="events"></label>
+<script>getEvents()</script>
+</body>
 </html>
