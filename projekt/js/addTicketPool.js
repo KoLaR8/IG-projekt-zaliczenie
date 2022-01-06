@@ -38,10 +38,9 @@ function verify() {
     const time = document.getElementById("inputTime").value
     const date = document.getElementById("inputDate").value
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://localhost:8000', true);
+    xhr.open("POST", 'http://localhost:8000/events', true);
     xhr.setRequestHeader('Content-Type', 'text/plain');
     xhr.send(JSON.stringify({
-        DBTable: "events",
         name: name,
         description: description,
         organizer: organizer

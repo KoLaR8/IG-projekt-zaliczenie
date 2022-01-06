@@ -6,10 +6,9 @@ function buyTickets(){
     const price = document.getElementById("finalPrice").innerText;
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://localhost:8000', true);
+    xhr.open("POST", 'http://localhost:8000/tickets', true);
     xhr.setRequestHeader('Content-Type', 'text/plain');
     xhr.send(JSON.stringify({
-        DBTable: "tickets",
         name: name,
         surname: surname,
         numberOfBoughtTickets: numberOfBoughtTickets,

@@ -17,9 +17,9 @@ connection.connect(function (err) {
 var server = http.createServer(function (request, response) {
 
     response.writeHead(200, {"Content-Type": "text/plain"});
+    let sql;
     if (request.method === "GET") {
-        response.end("received GET request.")
-        console.log("received GET request.");
+
     } else if (request.method === "POST") {
         let data = ""
         request.on('data', chunk => {
@@ -27,25 +27,27 @@ var server = http.createServer(function (request, response) {
         });
         request.on('end', () => {
             const json = JSON.parse(data)
+            console.log(request.url)
 
-            let sql;
-            if(json.DBTable === "events"){
-                sql = `INSERT INTO events (name, city, street, building_number, image, description, date, organizer) VALUES( '${json.name}', 'Krakow', 'Nijaka', '69', null, '${json.description}', '2020-10-10', 'Jakis smiec')`;
+            if (request.url === "/events") {
+                sql = `INSERT INTO events (name, city, street, building_number, image, description, date, organizer)
+                       VALUES ('${json.name}', 'Krakow', 'Nijaka', '69', null, '${json.description}', '2020-10-10',
+                               'Jakis smiec')`;
             }
-            if(json.DBTable === "tickets"){
-                sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail) VALUES( 1, 1, '${json.name}', '${json.surname}', '${json.price}', '${json.numberOfBoughtTickets}', '${json.mail}' )`;
+            if (request.url === "/tickets") {
+                sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
+                       VALUES (1, 1, "${json.name}", '${json.surname}', '${json.price}', '${json.numberOfBoughtTickets}
+                               ', '${json.mail}')`;
             }
 
-            connection.query(sql, function(err, result){
-                if(err) throw err;
+            connection.query(sql, function (err, result) {
+                if (err) throw err;
                 console.log("1 record inserted.");
             });
             response.end()
         });
 
-    }
-
-    else {
+    } else {
         response.end("Undefined request .");
     }
 });
