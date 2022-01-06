@@ -49,6 +49,11 @@ const server = http.createServer(function (request, response) {
                                ', '${json.mail}')`;
             }
 
+            if (request.url === "/users") {
+                sql = `INSERT INTO users(name, surname, email, login, password, organizer)
+                       VALUES ('${json.name}', '${json.surname}', '${json.email}', '${json.login}', '${json.password}', '1' )`;
+            }
+
             connection.query(sql, function (err, result) {
                 if (err) throw err;
                 console.log("1 record inserted.");

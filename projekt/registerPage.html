@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleRegisterPage.css">
     <!--    <link rel="stylesheet" href="css/styleAddEvent.css">-->
-    <!--    <script src="js/addTicketPool.js"></script>-->
+        <script src="js/createAccount.js"></script>
 </head>
 <body>
 <header>
@@ -70,7 +70,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email: </label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+            <input type="email" class="form-control" id="email"  placeholder="Email">
 
         </div>
         <div class="form-group">
@@ -85,8 +85,20 @@
             <label for="password2">Powtórz haslo: </label>
             <input type="password" class="form-control" id="password2" placeholder="Haslo">
         </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="user">
+            <label class="form-check-label" for="user">
+                Użytkownik
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="org" checked>
+            <label class="form-check-label" for="org">
+                Organizator
+            </label>
+        </div>
     </div>
-    <button type="button" class="btn btn-primary btn-lg loginButton" id="signInButton" onclick="login()">Zaloguj</button>
+    <button type="button" class="btn btn-primary btn-lg loginButton" id="signInButton" onclick="create()">Zarejestruj</button>
 </form>
 
 </body>
