@@ -63,6 +63,7 @@ label{
     height: 5vw;
     margin-right: 1.5%;
     margin-bottom: 2vw;
+    margin-top: 2vw;
     float: left;
     background-color: #584e9a;
     display: grid;
@@ -143,4 +144,27 @@ div p {
 }
 #finalPrice{
     font-size: xx-large;
+}
+
+#informationAboutEvent{
+    margin-top: 2vw;
+    margin-bottom: 20px;
+    width: 79%;
+    font-size: x-large;
+}
+
+.eventLabels{
+    margin-top: 2vw;
+    margin-left: 1%;
+    color: #58baa7;
+    width: 39%;
+    float: left;
+    margin-right: 10%;
+}
+
+.eventData{
+    margin-top: 2vw;
+    float: left;
+    width: 50%;
+    text-align: center;
 }
