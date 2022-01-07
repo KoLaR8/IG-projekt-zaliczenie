@@ -38,6 +38,17 @@ function verify() {
     const time = document.getElementById("inputTime").value
     const date = document.getElementById("inputDate").value
     const xhr = new XMLHttpRequest();
+
+    var artists = artist.split(", ");
+    var jsonArtists = JSON.stringify(Object.assign({}, artists));
+    var json_arr = {};
+    for(var i = 0; i< artists.length; i++){
+        var key = "name" + i;
+        json_arr[key] = artists[i];
+    }
+    json_arr["len"] = artists.length;
+    var json_string = JSON.stringify(json_arr);
+
     xhr.open("POST", 'http://localhost:8000/events', true);
     xhr.setRequestHeader('Content-Type', 'text/plain');
     xhr.send(JSON.stringify({
@@ -48,8 +59,11 @@ function verify() {
         street: street,
         building_number: building_number,
         date: date,
-        time: time
-
+        time: time,
     }));
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open("POST", 'http://localhost:8000/artists', true);
+    xhr2.setRequestHeader('Content-Type', 'text/plain');
+    console.log(json_string);
+    xhr2.send(json_string);
 }
-

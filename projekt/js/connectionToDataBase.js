@@ -25,7 +25,7 @@ function selectQuery(sql, request, response) {
 function insertQuery(sql) {
     connection.query(sql, function (err, result){
         if(err) throw err;
-        console.log("Inserted " + 1 + "record ");
+        console.log("Inserted " + 1 + " record ");
     });
 }
 
@@ -52,23 +52,36 @@ const server = http.createServer(function (request, response) {
         request.on('end', () => {
             const json = JSON.parse(data)
             console.log(request.url)
+            console.log(json)
 
             if (request.url === "/events") {
                 sql = `INSERT INTO events (name, city, street, building_number, image, description, date, time, organizer)
                        VALUES ('${json.name}', '${json.city}', '${json.street}', '${json.building_number}', null, '${json.description}', '${json.date}','${json.time}',
                                '${json.organizer}')`;
+                insertQuery(sql);
             }
             if (request.url === "/tickets") {
                 sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
                        VALUES (1, 1, "${json.name}", '${json.surname}', '${json.price}', '${json.numberOfBoughtTickets}
                                ', '${json.mail}')`;
+                insertQuery(sql);
             }
 
             if (request.url === "/users") {
                 sql = `INSERT INTO users(name, surname, email, login, password, organizer)
                        VALUES ('${json.name}', '${json.surname}', '${json.email}', '${json.login}', '${json.password}', '1' )`;
+                insertQuery(sql);
             }
-            insertQuery(sql);
+            if(request.url === "/artists"){
+                for(let i = 0; i < json.len; i++) {
+                    let artistName = "name" + i;
+                    let artist = json[artistName]
+                    sql = `INSERT INTO artists(name)
+                       VALUES ('${artist}')`;
+                    insertQuery(sql);
+                }
+            }
+
             response.end()
         });
 
