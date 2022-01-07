@@ -1,15 +1,69 @@
+const months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
+let newMonth = 0
+let newYear = 0
+function setDate(offset) {
+    let dateElement = document.getElementById("dateLabel");
+    if (offset === 1 || offset === -1) {
+        changeMonth(dateElement, offset)
+    } else {
+        const today = new Date()
+        newMonth = today.getMonth()
+        newYear = today.getFullYear()
+        dateElement.innerHTML = months[newMonth] + " " + newYear.toString()
+    }
+    const events = document.getElementById("list-group")
+    const newEvents = document.createElement("div")
+    newEvents.setAttribute("class", "list-group")
+    newEvents.setAttribute("id", "list-group")
+    document.body.replaceChild(newEvents, events)
+    getEvents(dateElement.innerHTML.split(" "))
+}
+
+function changeMonth(dateElement, offset) {
+    const date = dateElement.innerHTML.split(" ")
+    newMonth = months.findIndex(element => element === date[0]) + offset
+    newYear = parseInt(date[1], 10)
+    if (newMonth === 12) {
+        newMonth = 0
+        newYear += 1
+    }
+    if (newMonth === -1) {
+        newMonth = 11
+        newYear -= 1
+    }
+    dateElement.innerHTML = months[newMonth] + " " + newYear.toString()
+
+}
+
 function getEvents() {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
-        const events = document.getElementById("events")
+        const list = document.getElementById("list-group")
         const json = JSON.parse(xhr.responseText)
-        for(let i = 0; i < json.length; i++) {
-            const element = document.createElement("div")
-            element.innerHTML = json[i].name + " " + json[i].date;
-            events.appendChild(element)
+        for (let i = 0; i < json.length; i++) {
 
+            const a = document.createElement("a")
+            a.setAttribute("href", "#")
+            a.setAttribute("class", "list-group-item")
+            a.setAttribute("aria-current", "true")
+            const div = document.createElement("div")
+            div.setAttribute("class", "d-flex w-100 justify-content-between")
+            const h5 = document.createElement("h5")
+            h5.setAttribute("class", "mb-1")
+            const divSmall = document.createElement("small")
+            const p = document.createElement("p")
+            p.setAttribute("class", "mb-1")
+            const small = document.createElement("small")
+            h5.innerHTML = "Nazwa wydarzenia"
+            divSmall.innerHTML = "10-10-2022"
+            p.innerHTML = "Janusz Kowalski, Mariusz Pudzianowski, Gracjan Roztocki"
+            small.innerHTML = "Nigdzie"
+            div.append(h5, divSmall)
+            a.append(div, p, small)
+            list.appendChild(a)
         }
     }
-    xhr.open("GET", 'http://localhost:8000/events', true);
+    xhr.open("GET", 'http://localhost:8000/events?month=' + newMonth + '&year=' + newYear, true);
     xhr.send();
+
 }

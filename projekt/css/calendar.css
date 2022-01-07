@@ -1,0 +1,44 @@
+.list-group-item {
+    background-color: #d686d7;
+    color: #584e9a;
+}
+
+.list-group-item:hover{
+    opacity: 0.95;
+}
+
+.monthPicker {
+    left: 25vw;
+    background-color: #018c8c;
+    padding: 50px 15vw 50px 15vw;
+    position: relative;
+    border-radius: 5px;
+}
+
+.monthPicker p {
+    float: right;
+    font-size: calc(1.5vh + 1.5vw)
+}
+
+.arrow {
+    top: 70px;
+    border: solid black;
+    border-width: 0 8px 8px 0;
+    display: inline-block;
+    padding: 10px;
+}
+
+.arrow:hover {
+    cursor: pointer;
+}
+
+.right {
+    right:0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}

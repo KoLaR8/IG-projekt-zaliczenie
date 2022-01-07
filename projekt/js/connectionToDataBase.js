@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const http = require('http');
+const url = require('url')
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -34,10 +35,11 @@ const server = http.createServer(function (request, response) {
     response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin" : "*"});
     let sql;
     if (request.method === "GET") {
-        if (request.url === "/events") {
+        console.log(JSON.stringify(url.parse(request.url, true).query))
+
             sql = `SELECT * FROM events`;
             selectQuery(sql, request, response);
-        }
+
         if(request.url === "/events/1"){
             sql = `SELECT * FROM EVENTS WHERE event_id = 12`;
             selectQuery(sql, request, response);

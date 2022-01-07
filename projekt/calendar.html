@@ -10,6 +10,7 @@
     <script src="js/loginScripts.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/calendar.js"></script>
+    <link rel="stylesheet" href="css/calendar.css">
 </head>
 <body>
 <header>
@@ -45,7 +46,13 @@
         </div>
     </nav>
 </header>
-<label id="events"></label>
-<script>getEvents()</script>
+<label class="monthPicker">
+    <p><i class="arrow right" onclick="setDate(1)"></i></p>
+    <p id="dateLabel"></p>
+    <p><i class="arrow left" onclick="setDate(-1)"></i></p>
+
+</label>
+<div class="list-group" id="list-group"></div>
+<script>setDate()</script>
 </body>
 </html>
