@@ -22,6 +22,10 @@ const server = http.createServer(function (request, response) {
         if (request.url === "/events") {
             sql = `SELECT * FROM events`;
         }
+        if(request.url === "/events/1"){
+            console.log("hello");
+            sql = `SELECT * FROM EVENTS WHERE event_id = 12`;
+        }
         connection.query(sql, function (err, result) {
             if (err) throw err;
             console.log("Selected " + result.length + " records")

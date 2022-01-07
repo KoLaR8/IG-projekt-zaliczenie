@@ -168,3 +168,19 @@ div p {
     width: 50%;
     text-align: center;
 }
+
+#eventDescription{
+    display: inline-block;
+    height: auto;
+    margin-top: 5vw;
+    width: 79%;
+    word-wrap:break-word;
+    font-size: x-large;
+}
+
+#eventName{
+    width: 79%;
+    text-align: center;
+    font-size: xxx-large;
+    color: #58baa7;;
+}

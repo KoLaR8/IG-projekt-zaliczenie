@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/buyingTicket.css">
   <script type="text/javascript" src="js/ticketNumber.js"></script>
   <script type="text/javascript" src="js/readEvents.js"></script>
-  <script type="text/javascript" src="js/connectionToDataBase.js.js"></script>
   <script type="text/javascript" src="js/buyTickets.js"></script>
 </head>
 <body>
@@ -50,17 +49,17 @@
 </header>
 
 <div id = "buyingTicketContent">
-  <button onclick="loadDataAboutEvent()">kliknij mnie!</button>
   <img src="photos/concertphoto.png" class="img-fluid" id ="eventImage" alt="event image">
+  <div id="eventName" class="eventData"></div>
+  <div id = "eventDescription"></div>
   <div id ="informationAboutEvent">
-    <p class="eventLabels" id="nameLabel">wydarzenie: </p><p id="eventName" class="eventData">name</p>
     <p class="eventLabels" id="timeLabel">data: </p><p id="eventTime" class="eventData">time</p>
     <p class="eventLabels" id="cityLabel">miasto: </p><p id="eventCity" class="eventData">city</p>
     <p class="eventLabels" id="streetLabel">ulica: </p><p id="eventStreet" class="eventData">street</p>
     <p class="eventLabels" id="bNumberLabel">numer budynku: </p><p id="eventBuildingNumber" class="eventData">building number</p>
     <p class="eventLabels" id="organizedByLabel">zoorganizowane przez: </p><p id="eventOrganizer" class="eventData">organizer</p>
-    <p class="eventLabels" id="descriptionLabel">opis wydarzenia: </p><p id="eventDescription" class="eventData">description</p>
   </div>
+
   <form>
     <div class ="ticketPool" id="ticketPoolAvailable">
       <div class="ticketPoolName" id="poolName"><p>Pierwsza Pula</p></div>
