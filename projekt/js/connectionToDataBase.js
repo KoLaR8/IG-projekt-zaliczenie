@@ -14,6 +14,21 @@ connection.connect(function (err) {
 });
 
 
+function selectQuery(sql, request, response) {
+    connection.query(sql, function (err, result){
+        if(err) throw err;
+        console.log("Selected " + result.length + "records. ");
+        response.end(JSON.stringify(result));
+    });
+}
+
+function insertQuery(sql) {
+    connection.query(sql, function (err, result){
+        if(err) throw err;
+        console.log("Inserted " + 1 + "record ");
+    });
+}
+
 const server = http.createServer(function (request, response) {
 
     response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin" : "*"});
@@ -21,16 +36,12 @@ const server = http.createServer(function (request, response) {
     if (request.method === "GET") {
         if (request.url === "/events") {
             sql = `SELECT * FROM events`;
+            selectQuery(sql, request, response);
         }
         if(request.url === "/events/1"){
-            console.log("hello");
             sql = `SELECT * FROM EVENTS WHERE event_id = 12`;
+            selectQuery(sql, request, response);
         }
-        connection.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log("Selected " + result.length + " records")
-            response.end(JSON.stringify(result));
-        });
 
 
     } else if (request.method === "POST") {
@@ -57,11 +68,7 @@ const server = http.createServer(function (request, response) {
                 sql = `INSERT INTO users(name, surname, email, login, password, organizer)
                        VALUES ('${json.name}', '${json.surname}', '${json.email}', '${json.login}', '${json.password}', '1' )`;
             }
-
-            connection.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("1 record inserted.");
-            });
+            insertQuery(sql);
             response.end()
         });
 
