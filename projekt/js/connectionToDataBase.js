@@ -49,6 +49,11 @@ app.get('/events', function (req, res) {
 
 });
 
+app.get('/events/:id', function (req, res){
+    sql = `SELECT * FROM events WHERE event_id = '${req.params.id}'`;
+    selectQuery(sql, req, res);
+});
+
 app.get('/events/1', function (req, res) {
     sql = `SELECT *
            FROM EVENTS
@@ -197,7 +202,7 @@ app.get('/registerPage.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../registerPage.html'));
 });
 app.get('/searchingResults.html', function (req, res) {
-    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/searchingResults.html'));
+    res.sendFile(path.join(path.dirname(require.main.filename), '../searchingResults.html'));
 });
 app.get('/photos/1.png', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../photos/1.png'));
@@ -220,3 +225,4 @@ app.get('/photos/map.PNG', function (req, res) {
 app.get('/photos/my-events-photo.jpg', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../photos/my-events-photo.jpg'));
 });
+

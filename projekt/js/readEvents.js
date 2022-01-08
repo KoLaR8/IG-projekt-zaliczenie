@@ -18,7 +18,8 @@ window.onload = function loadDataAboutEvent(){
         eventOrganizer.innerHTML = json.organizer;
         eventDescription.innerText = json.description;
     }
-
-    xhr.open("GET", "http://localhost:8000/events/1");
+    let txt = document.location.href.split("?id=");
+    alert(txt[1]);
+    xhr.open("GET", "http://localhost:8000/events/" + txt[1]);
     xhr.send();
 }
