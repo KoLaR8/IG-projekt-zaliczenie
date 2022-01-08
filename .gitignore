@@ -2,3 +2,14 @@
 /workspace.xml
 /httpRequests/
 .idea/
+projekt/node_modules/bignumber.js/
+projekt/node_modules/core-util-is/
+projekt/node_modules/inherits/
+projekt/node_modules/isarray/
+projekt/node_modules/mysql/
+projekt/node_modules/process-nextick-args/
+projekt/node_modules/readable-stream/
+projekt/node_modules/safe-buffer/
+projekt/node_modules/sqlstring/
+projekt/node_modules/string_decoder/
+projekt/node_modules/util-deprecate/
