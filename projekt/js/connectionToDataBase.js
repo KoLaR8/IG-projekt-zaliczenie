@@ -20,7 +20,6 @@ function selectQuery(sql, request, response) {
     connection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Selected " + result.length + "records. ");
-        console.log(JSON.stringify(result))
         response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"});
         response.end(JSON.stringify(result));
     });
@@ -198,5 +197,26 @@ app.get('/registerPage.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../registerPage.html'));
 });
 app.get('/searchingResults.html', function (req, res) {
-    res.sendFile(path.join(path.dirname(require.main.filename), '../searchingResults.html'));
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/searchingResults.html'));
+});
+app.get('/photos/1.png', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/1.png'));
+});
+app.get('/photos/2.png', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/2.png'));
+});
+app.get('/photos/3.png', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/3.png'));
+});
+app.get('/photos/add-event-photo.jpg', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/add-event-photo.jpg'));
+});
+app.get('/photos/concertphoto.png', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/concertphoto.png'));
+});
+app.get('/photos/map.PNG', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/map.PNG'));
+});
+app.get('/photos/my-events-photo.jpg', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../photos/my-events-photo.jpg'));
 });
