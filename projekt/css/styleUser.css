@@ -5,6 +5,7 @@ p {
 }
 
 .searchBar {
+    color:black;
     border: 1px;
     border-radius: 50px;
     height: 35px;

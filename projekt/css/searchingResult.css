@@ -1,0 +1,41 @@
+#searchBarContainer{
+    position: relative;
+    margin-top: 5vw;
+    width: 70%;
+    margin-right: 10%;
+    margin-left: 20%;
+}
+
+.searchBar {
+    border: 1px;
+    border-radius: 50px;
+    height: 35px;
+    color: black;
+    width: 79%;
+}
+
+input {
+    padding-left: 10px;
+    outline-width: 0;
+}
+
+
+button {
+    margin-left: -30px;
+    height: 35px;
+    border-width: medium;
+    border-radius: 50px;
+    border-color: #d686d7;
+    background-color: #a4ace7;
+    color: #584e9a;
+}
+
+button:hover {
+    background-color: #d686d7;
+}
+
+#SearchResultText{
+    color: #58baa7;
+    font-size: xxx-large;
+    text-align: center;
+}

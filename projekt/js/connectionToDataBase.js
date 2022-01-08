@@ -19,6 +19,7 @@ function selectQuery(sql, request, response) {
     connection.query(sql, function (err, result){
         if(err) throw err;
         console.log("Selected " + result.length + "records. ");
+        response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin" : "*"});
         response.end(JSON.stringify(result));
     });
 }
@@ -34,17 +35,25 @@ const server = http.createServer(function (request, response) {
 
     response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin" : "*"});
     let sql;
+    let searchParams = new URLSearchParams(request.url);
+    console.log(searchParams)
+    console.log(searchParams.has('/search?name')) // true
     if (request.method === "GET") {
         console.log(JSON.stringify(url.parse(request.url, true).query))
 
-            sql = `SELECT * FROM events`;
-            selectQuery(sql, request, response);
+            // sql = `SELECT * FROM events`;
+            // selectQuery(sql, request, response);
 
         if(request.url === "/events/1"){
             sql = `SELECT * FROM EVENTS WHERE event_id = 12`;
             selectQuery(sql, request, response);
         }
-
+        if(request.url === "/search?name=" + searchParams.get("/search?name")){
+            let search = searchParams.get("/search?name");
+            console.log(request.url)
+            sql = mysql.format("SELECT * FROM events WHERE name LIKE CONCAT('%', ?,  '%')", search);
+            selectQuery(sql, request, response);
+        }
 
     } else if (request.method === "POST") {
         let data = ""
