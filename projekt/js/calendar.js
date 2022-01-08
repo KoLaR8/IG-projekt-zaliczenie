@@ -1,6 +1,7 @@
 const months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
 let newMonth = 0
 let newYear = 0
+let monthDB = 0
 function setDate(offset) {
     let dateElement = document.getElementById("dateLabel");
     if (offset === 1 || offset === -1) {
@@ -41,7 +42,7 @@ function getEvents() {
         const list = document.getElementById("list-group")
         const json = JSON.parse(xhr.responseText)
         for (let i = 0; i < json.length; i++) {
-
+            const dateAndHour = json[i].date.split("T");
             const a = document.createElement("a")
             a.setAttribute("href", "#")
             a.setAttribute("class", "list-group-item")
@@ -54,16 +55,17 @@ function getEvents() {
             const p = document.createElement("p")
             p.setAttribute("class", "mb-1")
             const small = document.createElement("small")
-            h5.innerHTML = "Nazwa wydarzenia"
-            divSmall.innerHTML = "10-10-2022"
+            h5.innerHTML = json[i].name
+            divSmall.innerHTML = dateAndHour[0] + ", " + dateAndHour[1].substring(0, 5)
             p.innerHTML = "Janusz Kowalski, Mariusz Pudzianowski, Gracjan Roztocki"
-            small.innerHTML = "Nigdzie"
+            small.innerHTML = json[i].city + ", " + json[i].street + ", " + json[i].building_number
             div.append(h5, divSmall)
             a.append(div, p, small)
             list.appendChild(a)
         }
     }
-    xhr.open("GET", 'http://localhost:8000/events?month=' + newMonth + '&year=' + newYear, true);
+    monthDB = newMonth + 1
+    xhr.open("GET", 'http://localhost:8000/events?month=' + monthDB + '&year=' + newYear, true);
     xhr.send();
 
 }
