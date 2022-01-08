@@ -50,7 +50,7 @@ function verify() {
     var json_string = JSON.stringify(json_arr);
 
     xhr.open("POST", 'http://localhost:8000/events', true);
-    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         name: name,
         description: description,
@@ -63,7 +63,7 @@ function verify() {
     }));
     const xhr2 = new XMLHttpRequest();
     xhr2.open("POST", 'http://localhost:8000/artists', true);
-    xhr2.setRequestHeader('Content-Type', 'text/plain');
+    xhr2.setRequestHeader('Content-Type', 'application/json');
     console.log(json_string);
     xhr2.send(json_string);
 }

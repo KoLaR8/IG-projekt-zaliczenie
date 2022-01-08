@@ -1,5 +1,7 @@
 const mysql = require("mysql");
-const http = require('http');
+const express = require('express');
+const path = require("path");
+const bodyParser = require("body-parser")
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -31,81 +33,170 @@ function insertQuery(sql) {
     });
 }
 
-const server = http.createServer(function (request, response) {
+const app = express();
+const port = process.env.PORT || 8000;
 
-    response.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"});
-    let sql;
-    let searchParams = new URLSearchParams(request.url);
-    if (request.method === "GET") {
-        if (request.url === "/events?month=" + searchParams.get("/events?month") + "&year=" + searchParams.get("year")) {
-            sql = `SELECT *
-                   FROM events
-                   WHERE MONTH(date) = '${searchParams.get("/events?month")}'
-                   AND YEAR(date) = '${searchParams.get("year")}'`;
-            selectQuery(sql, request, response);
-        }
-        if (request.url === "/events/1") {
-            sql = `SELECT *
-                   FROM EVENTS
-                   WHERE event_id = 12`;
-            selectQuery(sql, request, response);
-        }
-        if (request.url === "/search?name=" + searchParams.get("/search?name")) {
-            let search = searchParams.get("/search?name");
-            console.log(request.url)
-            sql = mysql.format("SELECT * FROM events WHERE name LIKE CONCAT('%', ?,  '%')", search);
-            selectQuery(sql, request, response);
-        }
+let sql;
+app.use(bodyParser.json())
 
-    } else if (request.method === "POST") {
-        let data = ""
-        request.on('data', chunk => {
-            data += chunk.toString()
-        });
-        request.on('end', () => {
-            const json = JSON.parse(data)
-            console.log(request.url)
-            console.log(json)
+app.get('/events', function (req, res) {
+    if (req.query.month && req.query.year) {
+        sql = `SELECT *
+               FROM events
+               WHERE MONTH (date) = '${req.query.month}'
+                 AND YEAR (date) = '${req.query.year}'`;
+        selectQuery(sql, req, res);
+    }
 
-            if (request.url === "/events") {
-                sql = `INSERT INTO events (name, city, street, building_number, image, description, date, time,
-                                           organizer)
-                       VALUES ('${json.name}', '${json.city}', '${json.street}', '${json.building_number}', null,
-                               '${json.description}', '${json.date}', '${json.time}',
-                               '${json.organizer}')`;
-                insertQuery(sql);
-            }
-            if (request.url === "/tickets") {
-                sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
-                       VALUES (1, 1, "${json.name}", '${json.surname}', '${json.price}', '${json.numberOfBoughtTickets}
-                               ', '${json.mail}')`;
-                insertQuery(sql);
-            }
+});
 
-            if (request.url === "/users") {
-                sql = `INSERT INTO users(name, surname, email, login, password, organizer)
-                       VALUES ('${json.name}', '${json.surname}', '${json.email}', '${json.login}', '${json.password}',
-                               '1')`;
-                insertQuery(sql);
-            }
-            if (request.url === "/artists") {
-                for (let i = 0; i < json.len; i++) {
-                    let artistName = "name" + i;
-                    let artist = json[artistName]
-                    sql = `INSERT INTO artists(name)
-                           VALUES ('${artist}')`;
-                    insertQuery(sql);
-                }
-            }
+app.get('/events/1', function (req, res) {
+    sql = `SELECT *
+           FROM EVENTS
+           WHERE event_id = 12`;
+    selectQuery(sql, req, res);
 
-            response.end()
-        });
+});
 
-    } else {
-        response.end("Undefined request .");
+app.get('/search', function (req, res) {
+    if (req.query.name) {
+        sql = mysql.format("SELECT * FROM events WHERE name LIKE CONCAT('%', ?,  '%')", req.query.name);
+        selectQuery(sql, req, res);
     }
 });
 
-server.listen(8000);
-console.log("Server running on port 8000");
+app.post('/events', function (req, res) {
 
+    sql = `INSERT INTO events (name, city, street, building_number, image, description, date, time,
+                               organizer)
+           VALUES ('${req.body.name}', '${req.body.city}', '${req.body.street}', '${req.body.building_number}', null,
+                   '${req.body.description}', '${req.body.date}', '${req.body.time}',
+                   '${req.body.organizer}')`;
+    insertQuery(sql);
+});
+
+app.post('/artists', function (req, res) {
+
+    for (let i = 0; i < req.body.len; i++) {
+        let artistName = "name" + i;
+        let artist = req.body[artistName]
+        sql = `INSERT INTO artists(name)
+               VALUES ('${artist}')`;
+        insertQuery(sql);
+    }
+});
+
+app.post('/tickets', function (req, res) {
+    sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
+           VALUES (1, 1, "${req.body.name}", '${req.body.surname}', '${req.body.price}', '${req.body.numberOfBoughtTickets}
+                               ', '${req.body.mail}')`;
+    insertQuery(sql);
+});
+
+app.post('/users', function (req, res) {
+    sql = `INSERT INTO users(name, surname, email, login, password, organizer)
+           VALUES ('${req.body.name}', '${req.body.surname}', '${req.body.email}', '${req.body.login}', '${req.body.password}',
+                   '1')`;
+    insertQuery(sql);
+});
+
+
+app.listen(port);
+console.log('Server started at http://localhost:' + port);
+
+app.get('/css/buyingTicket.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/buyingTicket.css'));
+});
+app.get('/css/calendar.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/calendar.css'));
+});
+app.get('/css/searchingResult.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/searchingResult.css'));
+});
+app.get('/css/style.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/style.css'));
+});
+app.get('/css/styleAddEvent.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleAddEvent.css'));
+});
+app.get('/css/styleLogin.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleLogin.css'));
+});
+app.get('/css/styleMainPageOrganizer.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleMainPageOrganizer.css'));
+});
+app.get('/css/styleMap.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleMap.css'));
+});
+app.get('/css/styleRegisterPage.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleRegisterPage.css'));
+});
+app.get('/css/styleUser.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleUser.css'));
+});
+app.get('/js/addTicketPool.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'addTicketPool.js'));
+});
+app.get('/js/buyTickets.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'buyTickets.js'));
+});
+app.get('/js/calendar.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'calendar.js'));
+});
+app.get('/js/createAccount.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'createAccount.js'));
+});
+app.get('/js/loginScripts.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'loginScripts.js'));
+});
+app.get('/js/mapScripts.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'mapScripts.js'));
+});
+app.get('/js/readEvents.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'readEvents.js'));
+});
+app.get('/js/searching.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'searching.js'));
+});
+app.get('/js/ticketNumber.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'ticketNumber.js'));
+});
+app.get('/', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../mainpageLoggedOut.html'));
+});
+app.get('/addEvent.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../addEvent.html'));
+});
+app.get('/addEvent.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../addEvent.html'));
+});
+app.get('/BuyingTicketsForEventPage.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../BuyingTicketsForEventPage.html'));
+});
+app.get('/calendar.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../calendar.html'));
+});
+app.get('/kontakt.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../kontakt.html'));
+});
+app.get('/loginPage.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../loginPage.html'));
+});
+app.get('/mainPageLoggedOut.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPageLoggedOut.html'));
+});
+app.get('/mainPageOrganizer.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPageOrganizer.html'));
+});
+app.get('/mainPageUser.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPageUser.html'));
+});
+app.get('/map.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../map.html'));
+});
+app.get('/registerPage.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../registerPage.html'));
+});
+app.get('/searchingResults.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../searchingResults.html'));
+});
