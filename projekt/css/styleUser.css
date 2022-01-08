@@ -1,7 +1,7 @@
 p {
     position: absolute;
     left: 15vw;
-    top: 30vh;
+    top: 20vh;
 }
 
 .searchBar {
@@ -34,7 +34,7 @@ button:hover {
 
 .recommended {
     position: absolute;
-    top: 40vh;
+    top: 27.5vh;
     left: 45vw;
     color: #58baa7;
     font-size: calc(2vw + 2vh);
@@ -42,36 +42,36 @@ button:hover {
 
 .slider {
     overflow: hidden;
-    height: 30vh;
+    height: 50vh;
     width: 70vw;
-    margin-left: 15vw;
-    margin-top: 40vh;
+    margin-left: 14.5vw;
+    margin-top: 30vh;
 }
 
 @-webkit-keyframes slideAnimation {
     0% {left:0;}
     10% {left:0;}
-    20% {left:71.5vw;}
-    30% {left:71.5vw;}
-    40% {left:141.5vw;}
-    50% {left:141.5vw;}
-    60% {left:71.5vw;}
-    70% {left:71.5vw;}
+    20% {left:70vw;}
+    30% {left:70vw;}
+    40% {left:140vw;}
+    50% {left:140vw;}
+    60% {left:70vw;}
+    70% {left:70vw;}
     80% {left:0;}
     90% {left:0;}
     100% {left:0;}
 }
 
 img {
-    height: 30vh;
+    height: 50vh;
     width: 70vw;
 }
 
 .slideImages {
     width: 210vw;
-    height: 30vh;
+    height: 50vh;
     position: relative;
-    margin-left: -1900px;
+    margin-left: -140vw;
     -webkit-animation-name: slideAnimation;
     -webkit-animation-duration: 15s;
     -webkit-animation-iteration-count: infinite;
@@ -80,7 +80,7 @@ img {
 }
 
 .imgContainer {
-    height: 30vh;
+    height: 50vh;
     width: 70vw;
     position: relative;
     float: right;
