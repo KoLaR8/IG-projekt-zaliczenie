@@ -1,4 +1,4 @@
-window.onload = function loadDataAboutEvent() {
+function loadDataAboutEvent() {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         const eventName = document.getElementById("eventName");
@@ -20,7 +20,6 @@ window.onload = function loadDataAboutEvent() {
         eventDescription.innerText = json.description;
     }
     let txt = document.location.href.split("?id=");
-    alert(txt[1]);
     xhr.open("GET", "http://localhost:8000/events/" + txt[1]);
     xhr.send();
     readArtists(txt);
