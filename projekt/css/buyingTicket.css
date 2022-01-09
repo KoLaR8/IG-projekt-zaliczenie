@@ -184,3 +184,19 @@ div p {
     font-size: xxx-large;
     color: #58baa7;
 }
+
+#artistsText{
+    width: 30%;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    color: #58baa7;
+    font-size: xx-large;
+    float: left;
+}
+
+#artists{
+    float: left;
+    font-size: xx-large;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}

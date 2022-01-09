@@ -54,19 +54,16 @@ app.get('/events/:id', function (req, res){
     selectQuery(sql, req, res);
 });
 
-app.get('/events/1', function (req, res) {
-    sql = `SELECT *
-           FROM EVENTS
-           WHERE event_id = 12`;
-    selectQuery(sql, req, res);
-
-});
-
 app.get('/search', function (req, res) {
     if (req.query.name) {
         sql = mysql.format("SELECT * FROM events WHERE name LIKE CONCAT('%', ?,  '%')", req.query.name);
         selectQuery(sql, req, res);
     }
+});
+
+app.get('/artists-in-events/:id', function (req,res){
+    sql = `SELECT DISTINCT(name) FROM artists_in_events JOIN artists ON artists_in_events.artist_id = artists.artist_id WHERE artists_in_events.event_id = '${req.params.id}'`;
+    selectQuery(sql, req, res);
 });
 
 app.post('/events', function (req, res) {
