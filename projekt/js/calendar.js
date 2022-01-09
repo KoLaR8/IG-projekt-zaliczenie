@@ -2,6 +2,7 @@ const months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "L
 let newMonth = 0
 let newYear = 0
 let monthDB = 0
+
 function setDate(offset) {
     let dateElement = document.getElementById("dateLabel");
     if (offset === 1 || offset === -1) {
@@ -37,10 +38,11 @@ function changeMonth(dateElement, offset) {
 }
 
 function getEvents() {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    const eventsRequest = new XMLHttpRequest();
+    const artistsInEventsRequest = new XMLHttpRequest();
+    eventsRequest.onload = function () {
         const list = document.getElementById("list-group")
-        const json = JSON.parse(xhr.responseText)
+        const json = JSON.parse(eventsRequest.responseText)
         for (let i = 0; i < json.length; i++) {
             const dateAndHour = json[i].date.split("T");
             const a = document.createElement("a")
@@ -57,7 +59,18 @@ function getEvents() {
             const small = document.createElement("small")
             h5.innerHTML = json[i].name
             divSmall.innerHTML = dateAndHour[0] + ", " + dateAndHour[1].substring(0, 5)
-            p.innerHTML = "Janusz Kowalski, Mariusz Pudzianowski, Gracjan Roztocki"
+            const xhr2 = new XMLHttpRequest();
+            xhr2.onload = function () {
+                const json = JSON.parse(xhr2.responseText);
+                for (let j = 0; j < json.length; j++) {
+                    if (j !== 0) {
+                        p.innerText += ","
+                    }
+                    p.innerText += " " + json[j].name;
+                }
+            }
+            xhr2.open("GET", "http://localhost:8000/artists-in-events/" + json[i].event_id)
+            xhr2.send();
             small.innerHTML = json[i].city + ", " + json[i].street + ", " + json[i].building_number
             div.append(h5, divSmall)
             a.append(div, p, small)
@@ -65,7 +78,7 @@ function getEvents() {
         }
     }
     monthDB = newMonth + 1
-    xhr.open("GET", 'http://localhost:8000/events?month=' + monthDB + '&year=' + newYear, true);
-    xhr.send();
+    eventsRequest.open("GET", 'http://localhost:8000/events?month=' + monthDB + '&year=' + newYear, true);
+    eventsRequest.send();
 
 }
