@@ -22,19 +22,31 @@ function chooseAccountAndLogin(element) {
 }
 
 function login() {
+    const loginRequest = new XMLHttpRequest()
     let login = document.getElementById("login")
     let password = document.getElementById("password")
-    if (login.value === "test" && password.value === "test") {
-        if (id === "organizerLogin") {
-            document.location.href = "mainPageOrganizer.html"
-            window.sessionStorage.setItem("loginStatus", "organizer")
-        } else {
-            document.location.href = "mainPageUser.html"
-            window.sessionStorage.setItem("loginStatus", "user")
+    loginRequest.open("POST", 'http://localhost:8000/login/', true);
+    loginRequest.setRequestHeader('Content-Type', 'application/json');
+    loginRequest.send(JSON.stringify({
+        loginType: id,
+        login: login.value,
+        password: password.value,
+    }));
+    loginRequest.onload = function () {
+        if (loginRequest.responseText === "true") {
+            if(id === "organizerLogin") {
+                document.location.href = "mainPageOrganizer.html"
+                window.sessionStorage.setItem("loginStatus", "organizer")
+            }
+            else {
+                document.location.href = "mainPageUser.html"
+                window.sessionStorage.setItem("loginStatus", "user")
+            }
+        }  else {
+            //alert("Niepoprawne dane logowania!")
         }
-    } else {
-        alert("Niepoprawne dane logowania!")
     }
+
 }
 
 function logOut() {
@@ -44,11 +56,9 @@ function logOut() {
 function redirectToProperMainPage() {
     if (window.sessionStorage.getItem("loginStatus") === "organizer") {
         window.location.href = "mainPageOrganizer.html"
-    }
-    else if (window.sessionStorage.getItem("loginStatus") === "user") {
+    } else if (window.sessionStorage.getItem("loginStatus") === "user") {
         window.location.href = "mainPageUser.html"
-    }
-    else {
+    } else {
         window.location.href = "mainPageLoggedOut.html"
     }
 }

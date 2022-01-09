@@ -39,7 +39,6 @@ function changeMonth(dateElement, offset) {
 
 function getEvents() {
     const eventsRequest = new XMLHttpRequest();
-    const artistsInEventsRequest = new XMLHttpRequest();
     eventsRequest.onload = function () {
         const list = document.getElementById("list-group")
         const json = JSON.parse(eventsRequest.responseText)
@@ -59,9 +58,9 @@ function getEvents() {
             const small = document.createElement("small")
             h5.innerHTML = json[i].name
             divSmall.innerHTML = dateAndHour[0] + ", " + dateAndHour[1].substring(0, 5)
-            const xhr2 = new XMLHttpRequest();
-            xhr2.onload = function () {
-                const json = JSON.parse(xhr2.responseText);
+            const artistsInEventsRequest = new XMLHttpRequest();
+            artistsInEventsRequest.onload = function () {
+                const json = JSON.parse(artistsInEventsRequest.responseText);
                 for (let j = 0; j < json.length; j++) {
                     if (j !== 0) {
                         p.innerText += ","
@@ -69,8 +68,8 @@ function getEvents() {
                     p.innerText += " " + json[j].name;
                 }
             }
-            xhr2.open("GET", "http://localhost:8000/artists-in-events/" + json[i].event_id)
-            xhr2.send();
+            artistsInEventsRequest.open("GET", "http://localhost:8000/artists-in-events/" + json[i].event_id)
+            artistsInEventsRequest.send();
             small.innerHTML = json[i].city + ", " + json[i].street + ", " + json[i].building_number
             div.append(h5, divSmall)
             a.append(div, p, small)

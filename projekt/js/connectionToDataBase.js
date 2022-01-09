@@ -16,7 +16,7 @@ connection.connect(function (err) {
 });
 
 
-function selectQuery(sql, request, response) {
+function selectQueryAndSendResponse(sql, request, response) {
     connection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Selected " + result.length + "records. ");
@@ -44,26 +44,31 @@ app.get('/events', function (req, res) {
                FROM events
                WHERE MONTH (date) = '${req.query.month}'
                  AND YEAR (date) = '${req.query.year}'`;
-        selectQuery(sql, req, res);
+        selectQueryAndSendResponse(sql, req, res);
     }
 
 });
 
-app.get('/events/:id', function (req, res){
-    sql = `SELECT * FROM events WHERE event_id = '${req.params.id}'`;
-    selectQuery(sql, req, res);
+app.get('/events/:id', function (req, res) {
+    sql = `SELECT *
+           FROM events
+           WHERE event_id = '${req.params.id}'`;
+    selectQueryAndSendResponse(sql, req, res);
 });
 
 app.get('/search', function (req, res) {
     if (req.query.name) {
         sql = mysql.format("SELECT * FROM events WHERE name LIKE CONCAT('%', ?,  '%')", req.query.name);
-        selectQuery(sql, req, res);
+        selectQueryAndSendResponse(sql, req, res);
     }
 });
 
-app.get('/artists-in-events/:id', function (req,res){
-    sql = `SELECT DISTINCT(name) FROM artists_in_events JOIN artists ON artists_in_events.artist_id = artists.artist_id WHERE artists_in_events.event_id = '${req.params.id}'`;
-    selectQuery(sql, req, res);
+app.get('/artists-in-events/:id', function (req, res) {
+    sql = `SELECT DISTINCT(name)
+           FROM artists_in_events
+                    JOIN artists ON artists_in_events.artist_id = artists.artist_id
+           WHERE artists_in_events.event_id = '${req.params.id}'`;
+    selectQueryAndSendResponse(sql, req, res);
 });
 
 app.post('/events', function (req, res) {
@@ -87,10 +92,14 @@ app.post('/artists', function (req, res) {
 });
 
 app.post('/artists-in-events', function (req, res) {
-    for(let i = 0; i < req.body.len; i++){
+    for (let i = 0; i < req.body.len; i++) {
         let artistName = "name" + i;
         let artist = req.body[artistName]
-        sql = `INSERT INTO artists_in_events(artist_id, event_id) SELECT artist_id, MAX(event_id) FROM artists, events WHERE artists.name = '${artist}'`;
+        sql = `INSERT INTO artists_in_events(artist_id, event_id)
+               SELECT artist_id, MAX(event_id)
+               FROM artists,
+                    events
+               WHERE artists.name = '${artist}'`;
         insertQuery(sql);
     }
 
@@ -98,22 +107,46 @@ app.post('/artists-in-events', function (req, res) {
 
 app.post('/tickets', function (req, res) {
     sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
-           VALUES (1, 1, "${req.body.name}", '${req.body.surname}', '${req.body.price}', '${req.body.numberOfBoughtTickets}
+           VALUES (1, 1, "${req.body.name}", '${req.body.surname}', '${req.body.price}',
+                   '${req.body.numberOfBoughtTickets}
                                ', '${req.body.mail}')`;
     insertQuery(sql);
 });
 
 app.post('/users', function (req, res) {
     sql = `INSERT INTO users(name, surname, email, login, password, organizer)
-           VALUES ('${req.body.name}', '${req.body.surname}', '${req.body.email}', '${req.body.login}', '${req.body.password}',
+           VALUES ('${req.body.name}', '${req.body.surname}', '${req.body.email}', '${req.body.login}',
+                   '${req.body.password}',
                    '1')`;
     insertQuery(sql);
 });
 
+app.post('/login', function (req, res) {
+    let organizer = req.body.loginType === "organizerLogin" ? 1 : 0;
+    let validLogin = "false";
+    sql = `SELECT *
+           FROM users
+           WHERE login = '${req.body.login}'
+             AND password = '${req.body.password}'
+             AND organizer = '${organizer}'`;
+
+    connection.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Selected " + result.length + "records. ");
+        for(let i = 0; i < result.length; i++) {
+            if(result[i].organizer === organizer){
+                validLogin = "true";
+            }
+        }
+        res.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"});
+        res.end(validLogin);
+    });
+
+})
+
 
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
-
 
 
 app.get('/css/buyingTicket.css', function (req, res) {
