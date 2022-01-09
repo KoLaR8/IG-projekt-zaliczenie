@@ -66,4 +66,9 @@ function verify() {
     xhr2.setRequestHeader('Content-Type', 'application/json');
     console.log(json_string);
     xhr2.send(json_string);
+
+    const xhr3 = new XMLHttpRequest();
+    xhr3.open("POST", 'http://localhost:8000/artists-in-events', true);
+    xhr3.setRequestHeader('Content-Type', 'application/json');
+    xhr3.send(json_string)
 }

@@ -78,7 +78,6 @@ app.post('/events', function (req, res) {
                    '${req.body.organizer}')`;
     insertQuery(sql);
 });
-
 app.post('/artists', function (req, res) {
 
     for (let i = 0; i < req.body.len; i++) {
@@ -88,6 +87,16 @@ app.post('/artists', function (req, res) {
                VALUES ('${artist}')`;
         insertQuery(sql);
     }
+});
+
+app.post('/artists-in-events', function (req, res) {
+    for(let i = 0; i < req.body.len; i++){
+        let artistName = "name" + i;
+        let artist = req.body[artistName]
+        sql = `INSERT INTO artists_in_events(artist_id, event_id) SELECT artist_id, MAX(event_id) FROM artists, events WHERE artists.name = '${artist}'`;
+        insertQuery(sql);
+    }
+
 });
 
 app.post('/tickets', function (req, res) {
