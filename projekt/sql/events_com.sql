@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Sty 2022, 23:18
--- Wersja serwera: 10.4.19-MariaDB
--- Wersja PHP: 7.3.28
+-- Czas generowania: 09 Sty 2022, 17:01
+-- Wersja serwera: 10.4.22-MariaDB
+-- Wersja PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -176,44 +176,13 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `name`, `surname`, `email`, `login`, `password`, `organizer`) VALUES
 (1, 'Andrzej', 'Kowalski', 'andrzej.kowalski@gmail.com', 'andrzej', 'kowalski', 0),
 (2, 'Jan', 'Cebulka', 'jan.cebulka@gmail.com', 'jan', '123', 1),
-(3, 'Mariusz', 'MaxKolonko', 'mariusz.maxkolonko@gmail.com', 'mariusz', '123', 1);
+(3, 'Mariusz', 'MaxKolonko', 'mariusz.maxkolonko@gmail.com', 'mariusz', '123', 1),
+(4, 'Test', 'Test', 'Test@Test.com', 'test', 'test', 1),
+(5, 'Test', 'Test', 'Test@Test.com', 'test', 'test', 0);
 
 --
 -- Indeksy dla zrzutów tabel
 --
-
---
--- Indeksy dla tabeli `artists`
---
-ALTER TABLE `artists`
-  ADD PRIMARY KEY (`artist_id`);
-
---
--- Indeksy dla tabeli `artists_in_events`
---
-ALTER TABLE `artists_in_events`
-  ADD KEY `artist_id` (`artist_id`),
-  ADD KEY `event_id` (`event_id`);
-
---
--- Indeksy dla tabeli `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`event_id`);
-
---
--- Indeksy dla tabeli `pools`
---
-ALTER TABLE `pools`
-  ADD PRIMARY KEY (`pool_id`);
-
---
--- Indeksy dla tabeli `tickets`
---
-ALTER TABLE `tickets`
-  ADD PRIMARY KEY (`ticket_id`),
-  ADD KEY `event_id` (`event_id`),
-  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indeksy dla tabeli `users`
@@ -226,52 +195,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT dla tabeli `artists`
---
-ALTER TABLE `artists`
-  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT dla tabeli `events`
---
-ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
--- AUTO_INCREMENT dla tabeli `pools`
---
-ALTER TABLE `pools`
-  MODIFY `pool_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT dla tabeli `tickets`
---
-ALTER TABLE `tickets`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Ograniczenia dla zrzutów tabel
---
-
---
--- Ograniczenia dla tabeli `artists_in_events`
---
-ALTER TABLE `artists_in_events`
-  ADD CONSTRAINT `artists_in_events_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`),
-  ADD CONSTRAINT `artists_in_events_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
-
---
--- Ograniczenia dla tabeli `tickets`
---
-ALTER TABLE `tickets`
-  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`),
-  ADD CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
