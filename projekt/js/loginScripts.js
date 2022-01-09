@@ -33,7 +33,8 @@ function login() {
         password: password.value,
     }));
     loginRequest.onload = function () {
-        if (loginRequest.responseText === "true") {
+        const json = JSON.parse(loginRequest.responseText);
+        if (json.validLogin === "true") {
             if(id === "organizerLogin") {
                 document.location.href = "mainPageOrganizer.html"
                 window.sessionStorage.setItem("loginStatus", "organizer")
@@ -42,8 +43,10 @@ function login() {
                 document.location.href = "mainPageUser.html"
                 window.sessionStorage.setItem("loginStatus", "user")
             }
+            window.sessionStorage.setItem("userID", json.userID)
+            alert(window.sessionStorage.getItem("userID"))
         }  else {
-            //alert("Niepoprawne dane logowania!")
+            alert("Niepoprawne dane logowania!")
         }
     }
 

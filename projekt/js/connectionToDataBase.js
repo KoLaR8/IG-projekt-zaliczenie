@@ -122,24 +122,29 @@ app.post('/users', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-    let organizer = req.body.loginType === "organizerLogin" ? 1 : 0;
+    let loginType = req.body.loginType === "organizerLogin" ? 1 : 0;
     let validLogin = "false";
+    let userID = "";
     sql = `SELECT *
            FROM users
            WHERE login = '${req.body.login}'
              AND password = '${req.body.password}'
-             AND organizer = '${organizer}'`;
+             AND organizer = '${loginType}'`;
 
     connection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Selected " + result.length + "records. ");
         for(let i = 0; i < result.length; i++) {
-            if(result[i].organizer === organizer){
+            if(result[i].organizer === loginType){
                 validLogin = "true";
+                userID = result[i].user_id
             }
         }
         res.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"});
-        res.end(validLogin);
+        res.end(JSON.stringify({
+            validLogin: validLogin,
+            userID: userID
+        }));
     });
 
 })
