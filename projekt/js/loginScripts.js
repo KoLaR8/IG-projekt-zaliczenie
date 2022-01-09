@@ -44,7 +44,6 @@ function login() {
                 window.sessionStorage.setItem("loginStatus", "user")
             }
             window.sessionStorage.setItem("userID", json.userID)
-            alert(window.sessionStorage.getItem("userID"))
         }  else {
             alert("Niepoprawne dane logowania!")
         }
