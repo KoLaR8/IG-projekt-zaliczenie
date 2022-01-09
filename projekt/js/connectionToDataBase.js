@@ -212,7 +212,7 @@ app.get('/js/ticketNumber.js', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), 'ticketNumber.js'));
 });
 app.get('/', function (req, res) {
-    res.sendFile(path.join(path.dirname(require.main.filename), '../mainpageLoggedOut.html'));
+    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPage.html'));
 });
 app.get('/myTickets.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../myTickets.html'));
@@ -235,14 +235,11 @@ app.get('/kontakt.html', function (req, res) {
 app.get('/loginPage.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../loginPage.html'));
 });
-app.get('/mainPageLoggedOut.html', function (req, res) {
-    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPageLoggedOut.html'));
-});
 app.get('/mainPageOrganizer.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../mainPageOrganizer.html'));
 });
-app.get('/mainPageUser.html', function (req, res) {
-    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPageUser.html'));
+app.get('/mainPage.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../mainPage.html'));
 });
 app.get('/map.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../map.html'));

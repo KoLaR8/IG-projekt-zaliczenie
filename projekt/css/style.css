@@ -9,6 +9,9 @@ input {
     color: #d686d7;
 }
 
+a {
+    text-decoration: none;
+}
 
 
 header {
