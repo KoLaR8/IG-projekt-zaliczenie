@@ -114,6 +114,8 @@ app.post('/users', function (req, res) {
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
 
+
+
 app.get('/css/buyingTicket.css', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../css/buyingTicket.css'));
 });
@@ -173,6 +175,9 @@ app.get('/js/ticketNumber.js', function (req, res) {
 });
 app.get('/', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../mainpageLoggedOut.html'));
+});
+app.get('/myTickets.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../myTickets.html'));
 });
 app.get('/addEvent.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../addEvent.html'));
