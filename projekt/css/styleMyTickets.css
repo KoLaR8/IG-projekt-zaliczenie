@@ -1,0 +1,34 @@
+.styleDiv{
+    background-color: #d686d7;
+    width: 80%;
+    height: 13vw;
+    margin-top: 5%;
+    margin-left: 10%;
+    font-size: 1.3vw;
+}
+.labels{
+
+    color: #584e9a;
+    width: 20%;
+    float: left;
+    margin-left: 50%;
+    margin-bottom: 0.5vw;
+}
+
+
+.datalabels{
+    float: right;
+    color: #584e9a;
+    width: 25%;
+}
+.title{
+    width: 100%;
+    height: 8vw;
+    margin-top: 5%;
+}
+.title p{
+    font-size: 5vw;
+    margin-left: 32%;
+
+
+}

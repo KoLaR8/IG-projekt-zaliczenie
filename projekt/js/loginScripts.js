@@ -48,8 +48,9 @@ userAccountDropdown_ul.setAttribute("aria-labelledby", "navbarDropdownMenuLink")
 const userAccountDropdown_ul_li1 = document.createElement("a");
 const userAccountDropdown_ul_li1_a = document.createElement("a");
 userAccountDropdown_ul_li1_a.setAttribute("class", "dropdown-item");
-userAccountDropdown_ul_li1_a.setAttribute("href", "#");
+userAccountDropdown_ul_li1_a.setAttribute("href", "myTickets.html");
 userAccountDropdown_ul_li1_a.innerHTML = "Moje Bilety";
+
 const userAccountDropdown_ul_li2 = document.createElement("a");
 const userAccountDropdown_ul_li2_a = document.createElement("a");
 userAccountDropdown_ul_li2_a.setAttribute("class", "dropdown-item");

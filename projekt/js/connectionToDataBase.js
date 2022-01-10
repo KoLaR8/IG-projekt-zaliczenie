@@ -38,6 +38,11 @@ const port = process.env.PORT || 8000;
 let sql;
 app.use(bodyParser.json())
 
+app.get('/myTickets/:id', function (req, res){
+    sql = `SELECT * FROM tickets WHERE user_id = '${req.params.id}'`;
+    selectQueryAndSendResponse(sql, req, res)
+});
+
 app.get('/events', function (req, res) {
     if (req.query.month && req.query.year) {
         sql = `SELECT *
@@ -154,6 +159,10 @@ app.listen(port);
 console.log('Server started at http://localhost:' + port);
 
 
+app.get('/css/styleMyTickets.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleMyTickets.css'));
+});
+
 app.get('/css/buyingTicket.css', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../css/buyingTicket.css'));
 });
@@ -183,6 +192,9 @@ app.get('/css/styleRegisterPage.css', function (req, res) {
 });
 app.get('/css/styleUser.css', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleUser.css'));
+});
+app.get('/js/readTickets.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'readTickets.js'));
 });
 app.get('/js/addTicketPool.js', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), 'addTicketPool.js'));
