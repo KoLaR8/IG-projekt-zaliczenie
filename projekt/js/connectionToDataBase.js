@@ -43,6 +43,11 @@ app.get('/myTickets/:id', function (req, res){
     selectQueryAndSendResponse(sql, req, res)
 });
 
+app.get('/myTickets/event/:id/:usermail', function (req, res){
+    sql = `SELECT events.name FROM events join tickets on tickets.event_id = events.event_id WHERE events.event_id = '${req.params.id}' AND tickets.mail = '${req.params.usermail}'`;
+    selectQueryAndSendResponse(sql, req, res)
+});
+
 app.get('/events', function (req, res) {
     if (req.query.month && req.query.year) {
         sql = `SELECT *

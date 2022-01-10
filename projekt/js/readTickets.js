@@ -49,6 +49,13 @@ function loadDataAboutTickets() {
             l10.innerHTML = json[i].numberOfBoughtTickets
             div.append(l1,l6,l2,l7,l3,l8,l4,l9,l5,l10)
             el.appendChild(div)
+            const xhr2 = new XMLHttpRequest();
+            xhr2.onload = function (){
+                const json2 = JSON.parse(xhr2.responseText);
+                console.log(json2)
+            }
+            xhr2.open("GET", "http://localhost:8000/myTickets/event/" + json[i].event_id + "/" + json[i].mail)
+            xhr2.send()
 
         }
     }
