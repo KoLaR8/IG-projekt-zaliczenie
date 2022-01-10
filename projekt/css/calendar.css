@@ -1,6 +1,8 @@
 .list-group-item {
+    margin: auto;
     background-color: #d686d7;
     color: #584e9a;
+    width: 80%;
 }
 
 .list-group-item:hover{

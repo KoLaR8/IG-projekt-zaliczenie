@@ -38,6 +38,16 @@ const port = process.env.PORT || 8000;
 let sql;
 app.use(bodyParser.json())
 
+app.get('/organizerEvents.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../organizerEvents.html'));
+});
+
+app.get('/addedEvents/:id', function (req, res){
+    console.log("otrzymałem");
+    sql = `SELECT * FROM events WHERE addedBy = '${req.params.id}'`;
+    selectQueryAndSendResponse(sql, req, res)
+});
+
 app.get('/myTickets/:id', function (req, res){
     sql = `SELECT * FROM tickets WHERE user_id = '${req.params.id}'`;
     selectQueryAndSendResponse(sql, req, res)
@@ -227,6 +237,9 @@ app.get('/js/searching.js', function (req, res) {
 });
 app.get('/js/ticketNumber.js', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), 'ticketNumber.js'));
+});
+app.get('/js/readAddedEvents.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'readAddedEvents.js'));
 });
 app.get('/', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../mainPage.html'));
