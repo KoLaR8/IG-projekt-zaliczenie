@@ -22,6 +22,7 @@ function searchForEvents(txt) {
       const json = JSON.parse(xhr.responseText);
       console.log(json)
       const list = document.getElementById("ResultRows");
+      list.innerHTML = "";
       for (let i = 0; i < json.length; i++) {
 
          const dateAndHour = json[i].date.split("T");
