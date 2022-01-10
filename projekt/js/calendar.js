@@ -57,7 +57,7 @@ function getEvents() {
             p.setAttribute("class", "mb-1")
             const small = document.createElement("small")
             h5.innerHTML = json[i].name
-            divSmall.innerHTML = dateAndHour[0] + ", " + dateAndHour[1].substring(0, 5)
+            divSmall.innerHTML = dateAndHour[0] + " " + json[i].time
             const artistsInEventsRequest = new XMLHttpRequest();
             artistsInEventsRequest.onload = function () {
                 const json = JSON.parse(artistsInEventsRequest.responseText);

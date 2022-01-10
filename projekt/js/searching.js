@@ -24,7 +24,6 @@ function searchForEvents(txt) {
       const list = document.getElementById("ResultRows");
       list.innerHTML = "";
       for (let i = 0; i < json.length; i++) {
-
          const dateAndHour = json[i].date.split("T");
          console.log(json[i].event_id);
          const a = document.createElement("a")
@@ -40,7 +39,7 @@ function searchForEvents(txt) {
          p.setAttribute("class", "mb-1")
          const small = document.createElement("small")
          h5.innerHTML = json[i].name
-         divSmall.innerHTML = dateAndHour[0] + ", " + dateAndHour[1].substring(0, 5)
+         divSmall.innerHTML = dateAndHour[0] + " " + json[i].time
          small.innerHTML = json[i].city + ", " + json[i].street + ", " + json[i].building_number
 
          const artistsRequest = new XMLHttpRequest();
@@ -60,7 +59,6 @@ function searchForEvents(txt) {
          console.log("list: " + list)
          console.log("a: " + a)
       list.appendChild(a)
-// list.innerText += json[i].name +" "+json[i].city +" "+ json[i].street + " " +json[i].building_number + " " + json[i].time + "\n";
 }
    }
    xhr.onerror = function (err){
