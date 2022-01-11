@@ -27,7 +27,7 @@ function addPhoto() {
 }
 
 function verify() {
-
+    alert('Pomyślnie dodano wydarzenie! Możesz sprawdzić utworzone wydarzenia w zakładce "Moje wydarzenia" na stronie głównej.')
     const name = document.getElementById("exampleFormControlTextarea1").value
     const artist = document.getElementById("exampleFormControlTextarea2").value
     const description = document.getElementById("exampleFormControlTextarea3").value
@@ -48,7 +48,6 @@ function verify() {
     }
     json_arr["len"] = artists.length;
     var json_string = JSON.stringify(json_arr);
-
     xhr.open("POST", 'http://localhost:8000/events', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
