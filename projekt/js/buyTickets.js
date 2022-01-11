@@ -7,13 +7,14 @@ function buyTickets(){
 
     const xhr = new XMLHttpRequest();
     xhr.open("POST", 'http://localhost:8000/tickets', true);
-    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         name: name,
         surname: surname,
         numberOfBoughtTickets: numberOfBoughtTickets,
         mail: mail,
-        price: price
+        price: price,
+        ID: window.sessionStorage.getItem("userID")
     }));
 
     alert("Kupiono bilet! Możesz sprawdzić zakupione bilety w zakładce Konto użytkownika > Moje bilety!");
