@@ -1,7 +1,7 @@
 .styleDiv{
     background-color: #d686d7;
     width: 80%;
-    height: 13vw;
+    height: 16vw;
     margin-top: 5%;
     margin-left: 10%;
     font-size: 1.3vw;
@@ -31,4 +31,9 @@
     margin-left: 32%;
 
 
+}
+.concertName{
+    color: #584e9a;
+    font-size: 3vw;
+   width: 40%;
 }

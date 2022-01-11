@@ -7,7 +7,7 @@ function loadDataAboutTickets() {
         console.log(xhr.responseText)
 
 
-        for (let i = 0; i < json.length; i++) { //tu ma byc dlugosc jsona
+        for (let i = 0; i < json.length; i++) {
             const div = document.createElement("div")
             div.setAttribute("class", "styleDiv")
             const l1 = document.createElement("label")
@@ -21,11 +21,11 @@ function loadDataAboutTickets() {
             const l9 = document.createElement("label")
             const l10 = document.createElement("label")
             l1.setAttribute("class", "labels")
-            l1.innerText ="Imie"
+            l1.innerText = "Imie"
             l2.setAttribute("class", "labels")
-            l2.innerText ="Nazwisko"
+            l2.innerText = "Nazwisko"
             l3.setAttribute("class", "labels")
-            l3.innerText ="Cena"
+            l3.innerText = "Cena"
             l4.setAttribute("class", "labels")
             l4.innerText = "Email"
             l5.setAttribute("class", "labels")
@@ -47,13 +47,22 @@ function loadDataAboutTickets() {
             l8.innerHTML = json[i].price
             l9.innerHTML = json[i].mail
             l10.innerHTML = json[i].numberOfBoughtTickets
-            div.append(l1,l6,l2,l7,l3,l8,l4,l9,l5,l10)
-            el.appendChild(div)
+
+
             const xhr2 = new XMLHttpRequest();
-            xhr2.onload = function (){
+            xhr2.onload = function () {
                 const json2 = JSON.parse(xhr2.responseText);
-                console.log(json2)
+                // console.log(json2)
+                for (let i = 0; i < json.length; i++) {
+                    const l11 = document.createElement("label")
+                    l11.setAttribute("class", "concertName")
+                    l11.innerHTML = json2[i].name
+
+                    div.append(l11)
+                }
             }
+            div.append(l1, l6, l2, l7, l3, l8, l4, l9, l5, l10)
+            el.appendChild(div)
             xhr2.open("GET", "http://localhost:8000/myTickets/event/" + json[i].event_id + "/" + json[i].mail)
             xhr2.send()
 
