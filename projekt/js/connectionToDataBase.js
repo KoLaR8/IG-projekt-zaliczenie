@@ -94,10 +94,10 @@ app.get('/artists-in-events/:id', function (req, res) {
 app.post('/events', function (req, res) {
 
     sql = `INSERT INTO events (name, city, street, building_number, image, description, date, time,
-                               organizer)
+                               organizer, addedBy)
            VALUES ('${req.body.name}', '${req.body.city}', '${req.body.street}', '${req.body.building_number}', null,
                    '${req.body.description}', '${req.body.date}', '${req.body.time}',
-                   '${req.body.organizer}')`;
+                   '${req.body.organizer}', 0)`;
     insertQuery(sql);
 });
 app.post('/artists', function (req, res) {

@@ -71,4 +71,5 @@ function verify() {
     xhr3.open("POST", 'http://localhost:8000/artists-in-events', true);
     xhr3.setRequestHeader('Content-Type', 'application/json');
     xhr3.send(json_string)
+
 }
