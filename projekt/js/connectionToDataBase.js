@@ -38,6 +38,16 @@ const port = process.env.PORT || 8000;
 let sql;
 app.use(bodyParser.json())
 
+
+app.get('/myAccount/:id', function (req, res) {
+
+    sql = `SELECT *
+           FROM users
+           WHERE user_id = '${req.params.id}'`;
+
+    selectQueryAndSendResponse(sql, req, res);
+});
+
 app.get('/organizerEvents.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../organizerEvents.html'));
 });
@@ -173,6 +183,10 @@ app.post('/login', function (req, res) {
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
 
+app.get('/css/styleMyAccount.css', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleMyAccount.css'));
+});
+
 
 app.get('/css/styleMyTickets.css', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleMyTickets.css'));
@@ -208,6 +222,12 @@ app.get('/css/styleRegisterPage.css', function (req, res) {
 app.get('/css/styleUser.css', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../css/styleUser.css'));
 });
+
+app.get('/js/accountData.js', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), 'accountData.js'));
+});
+
+
 app.get('/js/readTickets.js', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), 'readTickets.js'));
 });
@@ -244,6 +264,12 @@ app.get('/js/readAddedEvents.js', function (req, res) {
 app.get('/', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../mainPage.html'));
 });
+
+app.get('/myAccount.html', function (req, res) {
+    res.sendFile(path.join(path.dirname(require.main.filename), '../myAccount.html'));
+});
+
+
 app.get('/myTickets.html', function (req, res) {
     res.sendFile(path.join(path.dirname(require.main.filename), '../myTickets.html'));
 });
