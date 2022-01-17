@@ -1,4 +1,4 @@
-function create(){
+function create() {
     const name = document.getElementById("name").value
     const surname = document.getElementById("surname").value
     const email = document.getElementById("email").value
@@ -7,10 +7,14 @@ function create(){
     const password2 = document.getElementById("password2").value
     const organizer = document.getElementById("org").checked
     const xhr = new XMLHttpRequest();
-    if (password === password2){
+
+    xhr.onload = function () {
+        alert("Rejestracja zakończona pomyślnie!");
+    }
+    if (password === password2) {
 
         xhr.open("POST", 'http://localhost:8000/users', true);
-        xhr.setRequestHeader('Content-Type', 'text/plain');
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             name: name,
             surname: surname,
@@ -20,8 +24,7 @@ function create(){
             organizer: organizer
 
         }));
-    }
-    else {
+    } else {
         alert("Podane hasla nie sa takie same!")
     }
 }

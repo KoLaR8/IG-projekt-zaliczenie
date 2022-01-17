@@ -144,11 +144,14 @@ app.post('/tickets', function (req, res) {
 });
 
 app.post('/users', function (req, res) {
+    const accountType = req.body.organizer === true ? 1 : 0;
     sql = `INSERT INTO users(name, surname, email, login, password, organizer)
            VALUES ('${req.body.name}', '${req.body.surname}', '${req.body.email}', '${req.body.login}',
                    '${req.body.password}',
-                   '1')`;
+                   '${accountType}')`;
     insertQuery(sql);
+    res.writeHead(200, {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"});
+    res.end();
 });
 
 app.post('/login', function (req, res) {

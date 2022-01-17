@@ -15,8 +15,8 @@ logInLink_a.innerHTML = "Zaloguj";
 logInLink.appendChild(logInLink_a);
 
 const userAccountDropdown = document.createElement("li");
-userAccountDropdown.setAttribute("class" , "nav-item dropdown");
-userAccountDropdown.setAttribute("id" , "logInOut");
+userAccountDropdown.setAttribute("class", "nav-item dropdown");
+userAccountDropdown.setAttribute("id", "logInOut");
 const userAccountDropdown_a = document.createElement("a");
 userAccountDropdown_a.setAttribute("class", "nav-link dropdown-toggle");
 Object.assign(userAccountDropdown_a, {
@@ -33,7 +33,7 @@ userAccountDropdown_a_svg.setAttribute("class", "bi bi-person-circle");
 Object.assign(userAccountDropdown_a_svg, {
     xmlns: 'http://www.w3.org/2000/svg',
     width: '16',
-    height:'16',
+    height: '16',
     fill: 'currentColor',
     viewBox: '0 0 16 16',
 });
@@ -48,18 +48,23 @@ userAccountDropdown_ul.setAttribute("aria-labelledby", "navbarDropdownMenuLink")
 const userAccountDropdown_ul_li1 = document.createElement("a");
 const userAccountDropdown_ul_li1_a = document.createElement("a");
 userAccountDropdown_ul_li1_a.setAttribute("class", "dropdown-item");
-userAccountDropdown_ul_li1_a.setAttribute("href", "myTickets.html");
-userAccountDropdown_ul_li1_a.innerHTML = "Moje Bilety";
-
+userAccountDropdown_ul_li1_a.setAttribute("href", "myAccount.html");
+userAccountDropdown_ul_li1_a.innerHTML = "Moje Konto";
 const userAccountDropdown_ul_li2 = document.createElement("a");
 const userAccountDropdown_ul_li2_a = document.createElement("a");
 userAccountDropdown_ul_li2_a.setAttribute("class", "dropdown-item");
-userAccountDropdown_ul_li2_a.setAttribute("href", "mainPage.html");
-userAccountDropdown_ul_li2_a.setAttribute("onclick", "logOut()");
-userAccountDropdown_ul_li2_a.innerHTML = "Wyloguj";
+
+
+const userAccountDropdown_ul_li3 = document.createElement("a");
+const userAccountDropdown_ul_li3_a = document.createElement("a");
+userAccountDropdown_ul_li3_a.setAttribute("class", "dropdown-item");
+userAccountDropdown_ul_li3_a.setAttribute("href", "mainPage.html");
+userAccountDropdown_ul_li3_a.setAttribute("onclick", "logOut()");
+userAccountDropdown_ul_li3_a.innerHTML = "Wyloguj";
 userAccountDropdown_ul_li1.appendChild(userAccountDropdown_ul_li1_a);
 userAccountDropdown_ul_li2.appendChild(userAccountDropdown_ul_li2_a);
-userAccountDropdown_ul.append(userAccountDropdown_ul_li1, userAccountDropdown_ul_li2);
+userAccountDropdown_ul_li3.appendChild(userAccountDropdown_ul_li3_a);
+userAccountDropdown_ul.append(userAccountDropdown_ul_li1, userAccountDropdown_ul_li2, userAccountDropdown_ul_li3);
 userAccountDropdown_a_svg.append(userAccountDropdown_a_svg_path1, userAccountDropdown_a_svg_path2);
 userAccountDropdown_a.appendChild(userAccountDropdown_a_svg);
 userAccountDropdown_a.appendChild(userAccountDropdown_a_svg);
@@ -100,16 +105,15 @@ function login() {
     loginRequest.onload = function () {
         const json = JSON.parse(loginRequest.responseText);
         if (json.validLogin === "true") {
-            if(id === "organizerLogin") {
+            if (id === "organizerLogin") {
                 document.location.href = "mainPageOrganizer.html"
                 window.sessionStorage.setItem("loginStatus", "organizer")
-            }
-            else {
+            } else {
                 document.location.href = "mainPage.html"
                 window.sessionStorage.setItem("loginStatus", "user")
             }
             window.sessionStorage.setItem("userID", json.userID)
-        }  else {
+        } else {
             alert("Niepoprawne dane logowania!")
         }
     }
@@ -132,11 +136,17 @@ function verifyLogin() {
     const logInOutButton = document.getElementById("logInOut")
     logInOutButton.remove();
 
-
-    if (window.sessionStorage.getItem("loginStatus") === "user" || window.sessionStorage.getItem("loginStatus") === "organizer"){
+    if (window.sessionStorage.getItem("loginStatus") != null && window.sessionStorage.getItem("loginStatus") !== "loggedOut") {
+        if (window.sessionStorage.getItem("loginStatus") === "user") {
+            userAccountDropdown_ul_li2_a.setAttribute("href", "myTickets.html");
+            userAccountDropdown_ul_li2_a.innerHTML = "Moje Bilety";
+        }
+        else {
+            userAccountDropdown_ul_li2_a.setAttribute("href", "organizerEvents.html");
+            userAccountDropdown_ul_li2_a.innerHTML = "Moje Wydarzenia";
+        }
         document.getElementById("navbar-items-list").appendChild(userAccountDropdown)
-    }
-    else {
+    } else {
         document.getElementById("navbar-items-list").appendChild(logInLink)
     }
 }

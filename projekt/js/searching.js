@@ -1,22 +1,20 @@
 function selectText(){
-   let txt = document.getElementById("searchBarInput").value;
-   searchForEvents(txt)
+   localStorage.setItem("searchValue", document.getElementById("searchBarInput").value);
+   searchForEvents()
 }
 
 function selectText2(){
-   let txt = document.getElementById("search").value;
+   localStorage.setItem("searchValue", document.getElementById("search").value);
    location.href = "searchingResults.html";
-   searchForEvents(txt)
 }
 
 function selectText3(){
-   let txt = document.getElementById("firstname").value;
+   localStorage.setItem("searchValue", document.getElementById("search").value);
    location.href = "searchingResults.html";
-   searchForEvents(txt)
 }
 
-function searchForEvents(txt) {
-
+function searchForEvents() {
+   document.getElementById("searchBarInput").value = localStorage.getItem("searchValue");
    const xhr = new XMLHttpRequest();
    xhr.onload = function () {
       const json = JSON.parse(xhr.responseText);
@@ -65,7 +63,7 @@ function searchForEvents(txt) {
       console.log(err);
    }
 
-   let url = 'http://localhost:8000/search?name=' + txt;
+   let url = 'http://localhost:8000/search?name=' + localStorage.getItem("searchValue");
    console.log(url)
    xhr.open("GET", url, true);
    xhr.send();
