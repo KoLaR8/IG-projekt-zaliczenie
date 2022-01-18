@@ -1,7 +1,7 @@
 .userChooseButton {
 
 }
-#organizerLogin, #userLogin{
+#organizerLogin, #userLogin, #registerButton{
 
     font-size: 2vw ;
 
@@ -80,5 +80,18 @@
 }
 
 #signInButton:hover {
+    background-color: #018c8c;
+}
+
+#registerButton{
+    margin-left: 40%;
+    margin-top: 3%;
+    float: left;
+
+}
+#registerButton a{
+    color: #ffffff;
+}
+#registerButton:hover{
     background-color: #018c8c;
 }
