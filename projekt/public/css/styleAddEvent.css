@@ -250,7 +250,7 @@ iframe {
 label {
 
     display: block;
-    width: 0%;
+    width: 0;
     float: left;
     margin-right: 20%;
     /*margin-inside: 10px;*/

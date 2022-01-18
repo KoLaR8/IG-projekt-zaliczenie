@@ -1,4 +1,4 @@
-function addPool(element) {
+function addPool() {
     var el = document.createElement("div");
     var parent = document.querySelector(".data");
     var name_input = document.createElement("textarea")
