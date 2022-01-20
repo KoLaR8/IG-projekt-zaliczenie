@@ -59,6 +59,7 @@ function verify() {
         building_number: building_number,
         date: date,
         time: time,
+        idUser: window.sessionStorage.getItem("userID")
     }));
     const xhr2 = new XMLHttpRequest();
     xhr2.open("POST", 'http://localhost:8000/artists', true);

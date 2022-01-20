@@ -8,7 +8,7 @@ function loadOrganizedEvents(){
         for (let i = 0; i < json.length; i++) {
             const dateAndHour = json[i].date.split("T");
             const a = document.createElement("a")
-            a.setAttribute("href", "http://localhost:8000/BuyingTicketsForEventPage.html?id=" + json[i].event_id)
+            a.setAttribute("href", "http://localhost:8000/editEvent.html?id=" + json[i].event_id)
             a.setAttribute("class", "list-group-item")
             a.setAttribute("aria-current", "true")
             const div = document.createElement("div")

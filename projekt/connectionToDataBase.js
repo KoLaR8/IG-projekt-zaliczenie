@@ -32,6 +32,13 @@ function insertQuery(sql) {
     });
 }
 
+function updateQuery(sql) {
+    connection.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Updated " + 1 + " record ");
+    });
+}
+
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -58,7 +65,6 @@ app.get('/myAccount/:id', function (req, res) {
 // });
 
 app.get('/addedEvents/:id', function (req, res){
-    console.log("otrzymałem");
     sql = `SELECT * FROM events WHERE addedBy = '${req.params.id}'`;
     selectQueryAndSendResponse(sql, req, res)
 });
@@ -112,9 +118,18 @@ app.post('/events', function (req, res) {
                                organizer, addedBy)
            VALUES ('${req.body.name}', '${req.body.city}', '${req.body.street}', '${req.body.building_number}', null,
                    '${req.body.description}', '${req.body.date}', '${req.body.time}',
-                   '${req.body.organizer}', 0)`;
+                   '${req.body.organizer}', '${req.body.idUser}')`;
     insertQuery(sql);
 });
+
+app.post('/editEvent/:id', function (req, res) {
+    sql = `UPDATE events 
+    SET name = '${req.body.name}', city = '${req.body.city}', street = '${req.body.street}', building_number = '${req.body.building_number}', 
+    description = '${req.body.description}', date = '${req.body.date}', time = '${req.body.time}', organizer = '${req.body.organizer}' 
+    WHERE event_id = '${req.params.id}'`;
+    updateQuery(sql);
+});
+
 app.post('/artists', function (req, res) {
 
     for (let i = 0; i < req.body.len; i++) {
