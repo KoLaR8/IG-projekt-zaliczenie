@@ -141,6 +141,27 @@ app.post('/artists', function (req, res) {
     }
 });
 
+app.get('/pools/:eventName', (req, res) =>{
+    console.log("select here")
+    sql = "SELECT event_id as id FROM events WHERE name = '" + req.params.eventName + "'"
+    selectQueryAndSendResponse(sql, req, res)
+})
+
+app.post('/pools/:eventId', (req, res) => {
+    for (let i = 0; i < req.body.len; i++) {
+        let poolName = "poolNames" + i;
+        let poolPrice = "poolPrice" + i;
+        let poolNumber = "poolsNumber" + i;
+        let name = req.body[poolName]
+        let price = req.body[poolPrice]
+        let number = req.body[poolNumber]
+        let id = req.params.eventId
+        sql = `INSERT INTO pools(name, price, number_of_tickets, event_id) VALUES ('${name}' , ${price}, ${number}, ${id})`
+        insertQuery(sql);
+    }
+
+})
+
 app.post('/artists-in-events', function (req, res) {
     for (let i = 0; i < req.body.len; i++) {
         let artistName = "name" + i;
