@@ -1,3 +1,9 @@
+function searchIfEnterPressed() {
+   if (event.keyCode === 13) {
+      selectText2()
+   }
+}
+
 function selectText(){
    localStorage.setItem("searchValue", document.getElementById("searchBarInput").value);
    searchForEvents()

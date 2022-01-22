@@ -91,6 +91,12 @@ function chooseAccountAndLogin(element) {
     }
 }
 
+function logInIfEnterPressed() {
+    if (event.keyCode === 13) {
+        login()
+    }
+}
+
 function login() {
     const loginRequest = new XMLHttpRequest()
     let login = document.getElementById("login")
