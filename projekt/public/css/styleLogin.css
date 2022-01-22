@@ -21,11 +21,11 @@
 #userLogin{
 
     margin-left: 28%;
-    margin-top: 15%;
+    margin-top: 5%;
     float: left;
 }
 #organizerLogin{
-    margin-top: 15%;
+    margin-top: 5%;
     margin-right: 28%;
     float: right;
 }
@@ -87,6 +87,7 @@
     margin-left: 40%;
     margin-top: 3%;
     float: left;
+    margin-bottom: 10%;
 
 }
 #registerButton a{
