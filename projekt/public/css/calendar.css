@@ -19,7 +19,8 @@
 
 .monthPicker p {
     float: right;
-    font-size: calc(1.5vh + 1.5vw)
+    font-size: calc(1.5vh + 1.5vw);
+    text-align: center;
 }
 
 .arrow {
