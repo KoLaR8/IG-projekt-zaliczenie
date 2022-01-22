@@ -1,19 +1,21 @@
-let counter = 0;
 
-function increaseTicketNumber() {
-    counter ++;
-    document.getElementById("ticketNumber").innerHTML = counter;
-    calculatePrice()
+
+function increaseTicketNumber(i) {
+    console.log("+")
+    let counter = parseInt(document.getElementById("numberOfTickets" + i).innerText)
+    counter++
+    document.getElementById("numberOfTickets" + i).innerText = counter.toString();
+    document.getElementById("finalPrice").innerText = (parseInt(document.getElementById("finalPrice").innerText) + parseInt(document.getElementById("poolPrice" + i).innerText)).toString()
+
 }
 
-function decreaseTicketNumber(){
+function decreaseTicketNumber(i){
+    let counter = parseInt(document.getElementById("numberOfTickets" + i).innerText)
+    console.log("-")
     if(counter > 0){
         counter--;
-        document.getElementById("ticketNumber").innerHTML = counter;
-        calculatePrice()
+        document.getElementById("numberOfTickets" + i).innerText = counter.toString()
+        document.getElementById("finalPrice").innerText = (parseInt(document.getElementById("finalPrice").innerText) - parseInt(document.getElementById("poolPrice" + i).innerText)).toString()
     }
 }
-function calculatePrice(){
-    let price = parseInt(document.getElementById("poolPrice").innerText);
-    document.getElementById("finalPrice").innerText = price * counter;
-}
+

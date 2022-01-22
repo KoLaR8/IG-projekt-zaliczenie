@@ -58,7 +58,7 @@ label{
     background-color: #a4ace7;
 }
 
-#ticketPoolAvailable{
+.ticketPool{
     width: 79%;
     height: 5vw;
     margin-right: 1.5%;
@@ -83,7 +83,7 @@ label{
     justify-content: center;
 }
 
-#currency{
+.ticketPoolCurrency{
     grid-area: currency;
     align-items: center;
     display: flex;

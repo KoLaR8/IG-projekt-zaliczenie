@@ -142,10 +142,14 @@ app.post('/artists', function (req, res) {
 });
 
 app.get('/pools/:eventName', (req, res) =>{
-    console.log("select here")
     sql = "SELECT event_id as id FROM events WHERE name = '" + req.params.eventName + "'"
     selectQueryAndSendResponse(sql, req, res)
 })
+
+app.get('/events/:id/pools', (req, res) => {{
+    sql = "SELECT name, price, number_of_tickets FROM pools WHERE event_id = " + req.params.id
+    selectQueryAndSendResponse(sql, req, res)
+}})
 
 app.post('/pools/:eventId', (req, res) => {
     for (let i = 0; i < req.body.len; i++) {
