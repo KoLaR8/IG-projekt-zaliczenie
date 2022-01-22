@@ -13,7 +13,7 @@ function loadDataAboutEvent() {
 
         const json = JSON.parse(xhr.responseText)[0];
         eventName.innerHTML = json.name;
-        eventTime.innerHTML = json.date;
+        eventTime.innerHTML = json.date.substring(0, json.date.indexOf("T")) + ", " + json.time;
         eventCity.innerHTML = json.city;
         eventStreet.innerHTML = json.street;
         eventBuildingNumber.innerHTML = json.building_number;
