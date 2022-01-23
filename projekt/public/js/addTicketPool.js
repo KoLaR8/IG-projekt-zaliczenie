@@ -27,10 +27,8 @@ function addPool() {
 
 }
 
-function addPhoto() {
 
 
-}
 let json = 0
 function getPools(){
     console.log("hello");
@@ -88,7 +86,7 @@ function verify() {
 
     var artists = artist.split(", ");
     var json_arr = {};
-    for(var i = 0; i< artists.length; i++){
+    for (var i = 0; i < artists.length; i++) {
         var key = "name" + i;
         json_arr[key] = artists[i];
     }
@@ -118,5 +116,4 @@ function verify() {
     xhr3.setRequestHeader('Content-Type', 'application/json');
     xhr3.send(json_string)
     getPools()
-
 }

@@ -74,7 +74,6 @@ function readPools(){
 
             let minusSign = document.createElement("div")
             let p4 = document.createElement("p")
-            p4.setAttribute("id", "ticketNumber" + i)
             minusSign.className = "minusSign"
             minusSign.setAttribute("onclick", "console.log(" + i + "); decreaseTicketNumber(" + i + ");")
             p4.innerText = "-"
@@ -83,6 +82,7 @@ function readPools(){
             let ticketNumber = document.createElement("div")
             let p5 = document.createElement("p")
             p5.setAttribute("id", "ticketNumber" + i)
+            p5.setAttribute("class", "ticketNumber")
             ticketNumber.className = "numberOfTickets"
             ticketNumber.setAttribute("id", "numberOfTickets" + i)
             // p5.innerText = json[i].number_of_tickets

@@ -1,7 +1,6 @@
 
 
 function increaseTicketNumber(i) {
-    console.log("+")
     let counter = parseInt(document.getElementById("numberOfTickets" + i).innerText)
     counter++
     document.getElementById("numberOfTickets" + i).innerText = counter.toString();
@@ -11,7 +10,6 @@ function increaseTicketNumber(i) {
 
 function decreaseTicketNumber(i){
     let counter = parseInt(document.getElementById("numberOfTickets" + i).innerText)
-    console.log("-")
     if(counter > 0){
         counter--;
         document.getElementById("numberOfTickets" + i).innerText = counter.toString()
