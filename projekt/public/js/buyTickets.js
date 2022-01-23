@@ -38,10 +38,11 @@ function buyTickets(){
     const price = document.getElementById("finalPrice").innerText;
     const numberOfTickets = document.getElementsByClassName("numberOfTickets")
 
-    for(let i in numberOfTickets){
-        let x = parseInt(numberOfTickets[i].innerText)
-        numberOfBoughtTickets += x
+    for(let i =0; i < numberOfTickets.length; i++){
+        numberOfBoughtTickets += parseInt(numberOfTickets[i].innerText)
     }
+
+    console.log(numberOfBoughtTickets)
     const xhr = new XMLHttpRequest();
     xhr.open("POST", 'http://localhost:8000/tickets', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -53,6 +54,5 @@ function buyTickets(){
         price: price,
         ID: window.sessionStorage.getItem("userID")
     }));
-
     alert("Kupiono bilet! Możesz sprawdzić zakupione bilety w zakładce Konto użytkownika > Moje bilety!");
 }

@@ -45,8 +45,6 @@ function readArtists(txt){
 function readPools(){
     const xhr = new XMLHttpRequest()
     xhr.onload = (req ) => {
-        console.log(xhr.responseText)
-        console.log(JSON.parse(xhr.responseText))
         const json = JSON.parse(xhr.responseText)
         for(let i = 0; i< json.length; i++) {
             let container = document.getElementById("pools")
@@ -75,7 +73,7 @@ function readPools(){
             let minusSign = document.createElement("div")
             let p4 = document.createElement("p")
             minusSign.className = "minusSign"
-            minusSign.setAttribute("onclick", "console.log(" + i + "); decreaseTicketNumber(" + i + ");")
+            minusSign.setAttribute("onclick", "decreaseTicketNumber(" + i + ");")
             p4.innerText = "-"
             minusSign.appendChild(p4)
 
@@ -92,7 +90,7 @@ function readPools(){
             let plusSign = document.createElement("div")
             let p6 = document.createElement("p")
             plusSign.className = "plusSign"
-            plusSign.setAttribute("onclick", "console.log(" + i + "); increaseTicketNumber(" + i + ");")
+            plusSign.setAttribute("onclick",  "increaseTicketNumber(" + i + ");")
             p6.innerText = "+"
             plusSign.appendChild(p6)
 
