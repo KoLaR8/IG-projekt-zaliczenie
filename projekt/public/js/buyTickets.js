@@ -42,11 +42,12 @@ function buyTickets(){
         numberOfBoughtTickets += parseInt(numberOfTickets[i].innerText)
     }
 
-    console.log(numberOfBoughtTickets)
+    let txt = document.location.href.split("?id=");
     const xhr = new XMLHttpRequest();
     xhr.open("POST", 'http://localhost:8000/tickets', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
+        eventid: txt[1],
         name: name,
         surname: surname,
         numberOfBoughtTickets: numberOfBoughtTickets,

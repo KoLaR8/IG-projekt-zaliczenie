@@ -182,7 +182,7 @@ app.post('/artists-in-events', function (req, res) {
 
 app.post('/tickets', function (req, res) {
     sql = `INSERT INTO tickets(event_id, user_id, name, surname, price, numberOfBoughtTickets, mail)
-           VALUES (1, "${req.body.ID}", "${req.body.name}", '${req.body.surname}', '${req.body.price}',
+           VALUES ("${req.body.eventid}", "${req.body.ID}", "${req.body.name}", '${req.body.surname}', '${req.body.price}',
                    '${req.body.numberOfBoughtTickets}
                                ', '${req.body.mail}')`;
     insertQuery(sql);
