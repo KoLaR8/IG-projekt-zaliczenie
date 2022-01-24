@@ -60,15 +60,16 @@ function getPools(){
     xhr1.onload = () => {
         json = JSON.parse(xhr1.responseText)[0]["id"]
         json_arr["eventId"] = json;
-        console.log(json)
+        console.log("1 " + json)
+        let xhr2 = new XMLHttpRequest();
+        xhr2.open("POST", 'http://localhost:8000/pools/' + json, true);
+        xhr2.setRequestHeader('Content-Type', 'application/json');
+        console.log("2 " + json)
+        xhr2.send(JSON.stringify(json_arr));
     }
     xhr1.open("GET", 'http://localhost:8000/pools/' + eventName, true);
     xhr1.send();
-    let xhr2 = new XMLHttpRequest();
-    xhr2.open("POST", 'http://localhost:8000/pools/' + json, true);
-    xhr2.setRequestHeader('Content-Type', 'application/json');
-    console.log(json_arr)
-    xhr2.send(JSON.stringify(json_arr));
+
 }
 
 function verify() {
