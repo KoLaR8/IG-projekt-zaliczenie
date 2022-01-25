@@ -211,6 +211,7 @@
 
 /*///////////////////////////////////////////////*/
 .photo {
+    margin-top: 5%;
     grid-area: photo;
     position: relative;
 }
